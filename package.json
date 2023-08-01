@@ -1,0 +1,22 @@
+{
+  "name": "navigate-configs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "compile": "tsc",
+    "start": "yarn compile && node --es-module-specifier-resolution=node ./dist/index.js"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.5.0",
+    "@prisma/client": "^4.13.0",
+    "graphql": "^16.6.0",
+    "graphql-type-json": "^0.3.2",
+    "prisma": "^4.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "^5.0.2"
+  }
+}

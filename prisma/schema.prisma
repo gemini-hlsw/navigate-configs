@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id   Int    @id @default(autoincrement())
+  name String
+}
+
+model Target {
+  pk           Int      @id @default(autoincrement())
+  id           String
+  name         String   @default("Test")
+  raAz         String
+  decEl        String
+  epoch        String   @default("J2000.000")
+  type         String   @default("Base")
+  coordSystem  String   @default("Celestial")
+  createdAt    DateTime @default(now())
+  blindTargets Json
+  guideTargets Json
+}
+
+model FixedTarget {
+  pk           Int      @id @default(autoincrement())
+  id           String
+  name         String   @default("Test")
+  raAz         String
+  decEl        String
+  epoch        String   @default("J2000.000")
+  type         String   @default("Base")
+  coordSystem  String   @default("Celestial")
+  createdAt    DateTime @default(now())
+  blindTargets Json
+  guideTargets Json
+}
+
+model Instrument {
+  id          Int     @id @default(autoincrement())
+  name        String
+  iaa         Float   @default(0.0)
+  issPort     Int
+  focusOffset Float   @default(0.0)
+  wfs         String  @default("None")
+  originX     Float   @default(0.0)
+  originY     Float   @default(0.0)
+  ao          Boolean @default(false)
+  extraParams Json
+}
+
+model CurrentInstrument {
+  id          Int     @id @default(autoincrement())
+  name        String
+  iaa         Float   @default(0.0)
+  issPort     Int
+  focusOffset Float   @default(0.0)
+  wfs         String  @default("None")
+  originX     Float   @default(0.0)
+  originY     Float   @default(0.0)
+  ao          Boolean @default(false)
+  extraParams Json
+}
