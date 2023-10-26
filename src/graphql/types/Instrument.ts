@@ -1,17 +1,25 @@
 export const InstrumentTypeDefs = `#graphql
   scalar JSON
 
+  enum WfsType {
+    NONE
+    PWFS1
+    PWFS2
+    OIWFS
+  }
+
   type Instrument {
-    id: Int             # Record Id
-    name: String        # Instrument name
-    iaa: Float          # Instrument Alignment Angle
-    issPort: Int        # Instrument Support Structure port
-    focusOffset: Float  # Focus offset
-    wfs: String         # Asociated Wavefront Sensor
-    originX: Float      # Origin of instrument X position
-    originY: Float      # Origin of instrument Y position
-    ao: Boolean         # Adaptive Optics is being used?
-    extraParams: JSON   # Instrument dependent set of parameters
+    pk: Int                         # Record primary key
+    name: String                    # Instrument name
+    iaa: Float                      # Instrument Alignment Angle
+    issPort: Int                    # Instrument Support Structure port
+    focusOffset: Float              # Focus offset
+    wfs: WfsType                    # Asociated Wavefront Sensor
+    originX: Float                  # Origin of instrument X position
+    originY: Float                  # Origin of instrument Y position
+    ao: Boolean                     # Adaptive Optics is being used?
+    extraParams: JSON               # Instrument dependent set of parameters
+    configurations: [Configuration] # List of posible configurations
   }
 
   # The "Query" type is special: it lists all of the available queries that
@@ -21,11 +29,16 @@ export const InstrumentTypeDefs = `#graphql
     instrument(
       name: String
       issPort: Int
-      wfs: String
+      wfs: WfsType
       extraParams: JSON
     ): Instrument
 
-    currentInstrument: Instrument
+    instruments(
+      name: String
+      issPort: Int
+      wfs: WfsType
+      extraParams: JSON
+    ): [Instrument]
   }
 
   type Mutation {
@@ -34,19 +47,7 @@ export const InstrumentTypeDefs = `#graphql
       iaa: Float          # Instrument Alignment Angle
       issPort: Int!       # Instrument Support Structure port
       focusOffset: Float  # Focus offset
-      wfs: String         # Asociated Wavefront Sensor
-      originX: Float      # Origin of instrument X position
-      originY: Float      # Origin of instrument Y position
-      ao: Boolean         # Adaptive Optics is being used?
-      extraParams: JSON   # Instrument dependent set of parameters
-    ): Instrument
-
-    updateCurrentInstrument(
-      name: String        # Instrument name
-      iaa: Float          # Instrument Alignment Angle
-      issPort: Int        # Instrument Support Structure port
-      focusOffset: Float  # Focus offset
-      wfs: String         # Asociated Wavefront Sensor
+      wfs: WfsType        # Asociated Wavefront Sensor
       originX: Float      # Origin of instrument X position
       originY: Float      # Origin of instrument Y position
       ao: Boolean         # Adaptive Optics is being used?

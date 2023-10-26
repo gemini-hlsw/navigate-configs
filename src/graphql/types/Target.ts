@@ -1,39 +1,63 @@
 export const TargetTypeDefs = `#graphql
-  scalar JSON
+
+  enum TargetType {
+    FIXED
+    SCIENCE
+    BLINDOFFSET
+    GUIDE
+  }
+
+  type RA {
+    degrees: Float
+    hms: String
+  }
+
+  type Dec {
+    degrees: Float
+    dms: String
+  }
+
+  type Az {
+    degrees: Float
+    dms: String
+  }
+
+  type El {
+    degrees: Float
+    dms: String
+  }
 
   type Target {
-    pk: Int               # Primary Key
-    id: String            # Target ID
-    name: String          # Name of the target
-    raAz: String          # RA or Az coordinate
-    decEl: String         # Dec or El coorinate
-    epoch: String         # Epoch of target
-    type: String          # OIWFS | PWFS1 | PWFS2 | Base
-    coordSystem: String   # Celestial | Horizontal
-    createdAt: String     # Datetime when it was created
-    blindTargets: JSON    # Array with blind offset targets
-    guideTargets: JSON    # Array with guide targets
+    pk: Int             # Primary Key
+    id: String          # Target ID
+    name: String        # Name of the target
+    ra: RA              # Right Ascention
+    az: Az              # Azimuth
+    el: El              # Elevation
+    dec: Dec            # Declination
+    epoch: String       # Epoch of target
+    type: TargetType    # FIXED | SCIENCE | BLINDOFFSET | OIWFS | PWFS1 | PWFS2
+    createdAt: String   # Datetime when it was created
   }
 
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each. In this
   # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
-    target: Target,
-    allFixedTargets: [Target]
+    target(pk: Int, id: String, name: String): Target
+    targets: [Target]
   }
 
   type Mutation {
     createTarget(
-      id: String!
+      id: String
       name: String!
-      raAz: String!
-      decEl: String!
-      epoch: String!
-      type: String!
-      coordSystem: String!
-      blindTargets: JSON
-      guideTargets: JSON
+      ra: Float
+      az: Float
+      dec: Float
+      el: Float
+      epoch: String
+      type: TargetType!
     ): Target
   }
 `

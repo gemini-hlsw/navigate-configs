@@ -1,19 +1,20 @@
 export const UserTypeDefs = `#graphql
   type User {
-    id: Int
+    pk: Int
     name: String
+    configurations: [Configuration]
   }
 
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each. In this
   # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
+    user(pk: Int!): User
     users: [User]
-    user(id: Int!): User
   }
 
   type Mutation {
-    addUser(
+    createUser(
       name: String!
     ): User
   }

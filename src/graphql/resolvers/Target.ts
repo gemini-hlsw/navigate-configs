@@ -1,31 +1,35 @@
-import { prisma } from "../../db"
-
-function getTarget(args) {
-  return prisma.target.findFirst({
-    orderBy: {
-      pk: 'desc',
-    },
-    take: 1
-  })
-}
-
-function getAllFixedTargets() {
-  return prisma.fixedTarget.findMany()
-}
-
-function createTarget(args) {
-  return prisma.target.create({ data: args })
-}
+import { prisma } from "../../prisma/db"
 
 export const TargetResolver = {
   Query: {
-    target: (_parent, args, _context, _info) => getTarget(args),
-    allFixedTargets: (_parent, _args, _context, _info) => getAllFixedTargets(),
+    target: (_parent, args, _context, _info) => {
+      return prisma.target.findFirst({
+        where: args,
+        orderBy: { pk: "desc" },
+      })
+    },
+
+    targets: (_parent, args, _context, _info) => {
+      return prisma.target.findMany({
+        where: args,
+        orderBy: { pk: "desc" },
+      })
+    },
   },
+
   Mutation: {
-    createTarget: (_parent, args, _context, _info) => createTarget(args)
+    createTarget: async (_parent, args, _context, _info) => {
+      if (args.type === "FIXED") {
+        // Some logics depending on the input
+        delete Object.assign(args, { coord1: args.ra })["ra"]
+        delete Object.assign(args, { coord2: args.dec })["dec"]
+      } else {
+        delete Object.assign(args, { coord1: args.ra })["ra"]
+        delete Object.assign(args, { coord2: args.dec })["dec"]
+      }
+      return prisma.target.create({
+        data: args,
+      })
+    },
   },
-  // User: {
-  //   birthday: (u) => u.birthday.toISOString()
-  // }
 }

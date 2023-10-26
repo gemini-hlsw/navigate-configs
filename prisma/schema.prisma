@@ -11,60 +11,101 @@ datasource db {
 }
 
 model User {
-  id   Int    @id @default(autoincrement())
-  name String
+  pk             Int                    @id @default(autoincrement())
+  configurations ConfigurationsOnUser[]
+  name           String
+}
+
+model SelectedConfiguration {
+  pk              Int           @id @default(autoincrement())
+  configuration   Configuration @relation(fields: [configurationPk], references: [pk])
+  configurationPk Int           @unique
+}
+
+model ConfigurationsOnUser {
+  user            User          @relation(fields: [userPk], references: [pk])
+  userPk          Int
+  configuration   Configuration @relation(fields: [configurationPk], references: [pk])
+  configurationPk Int
+
+  @@id([userPk, configurationPk])
+}
+
+model Configuration {
+  pk                    Int                    @id @default(autoincrement())
+  name                  String
+  users                 ConfigurationsOnUser[]
+  instrument            Instrument?            @relation(fields: [instrumentPk], references: [pk])
+  instrumentPk          Int?
+  observation           Observation?           @relation(fields: [observationPk], references: [pk])
+  observationPk         Int?
+  selectedConfiguration SelectedConfiguration?
+}
+
+model Observation {
+  pk             Int             @id @default(autoincrement())
+  configurations Configuration[]
+  targets        Target[]
+  guideProbes    GuideProbe[]
+  id             String          @unique // ODB ID
+  name           String
+  selectedTarget Int? // PK of selected base target
+  selectedProbe  String? // Name of selected probe
+}
+
+enum GuidingType {
+  NORMAL
+}
+
+model GuideProbe {
+  pk             Int         @id @default(autoincrement())
+  targets        Target[]
+  probe          String
+  guidingType    GuidingType @default(NORMAL)
+  selectedTarget Int // Primary Key of selected base target!
+  observation    Observation @relation(fields: [observationPk], references: [pk])
+  observationPk  Int
 }
 
 model Target {
-  pk           Int      @id @default(autoincrement())
-  id           String
-  name         String   @default("Test")
-  raAz         String
-  decEl        String
-  epoch        String   @default("J2000.000")
-  type         String   @default("Base")
-  coordSystem  String   @default("Celestial")
-  createdAt    DateTime @default(now())
-  blindTargets Json
-  guideTargets Json
+  pk            Int          @id @default(autoincrement())
+  observation   Observation? @relation(fields: [observationPk], references: [pk])
+  observationPk Int?
+  guideProbe    GuideProbe?  @relation(fields: [guideProbePk], references: [pk])
+  guideProbePk  Int?
+  id            String       @unique // ODB ID
+  name          String       @default("Test")
+  coord1        Float // RA or Az
+  coord2        Float // Dec or El
+  epoch         String       @default("J2000.000")
+  type          TargetType   @default(SCIENCE) // FIXED | SCIENCE | BLINDOFFSET | OIWFS | PWFS1 | PWFS2
+  createdAt     DateTime     @default(now())
 }
 
-model FixedTarget {
-  pk           Int      @id @default(autoincrement())
-  id           String
-  name         String   @default("Test")
-  raAz         String
-  decEl        String
-  epoch        String   @default("J2000.000")
-  type         String   @default("Base")
-  coordSystem  String   @default("Celestial")
-  createdAt    DateTime @default(now())
-  blindTargets Json
-  guideTargets Json
+enum TargetType {
+  FIXED
+  SCIENCE
+  BLINDOFFSET
+  GUIDE
 }
 
 model Instrument {
-  id          Int     @id @default(autoincrement())
-  name        String
-  iaa         Float   @default(0.0)
-  issPort     Int
-  focusOffset Float   @default(0.0)
-  wfs         String  @default("None")
-  originX     Float   @default(0.0)
-  originY     Float   @default(0.0)
-  ao          Boolean @default(false)
-  extraParams Json
+  pk             Int             @id @default(autoincrement())
+  configurations Configuration[]
+  name           String
+  iaa            Float           @default(0.0)
+  issPort        Int
+  focusOffset    Float           @default(0.0)
+  wfs            WfsType         @default(NONE)
+  originX        Float           @default(0.0)
+  originY        Float           @default(0.0)
+  ao             Boolean         @default(false)
+  extraParams    Json
 }
 
-model CurrentInstrument {
-  id          Int     @id @default(autoincrement())
-  name        String
-  iaa         Float   @default(0.0)
-  issPort     Int
-  focusOffset Float   @default(0.0)
-  wfs         String  @default("None")
-  originX     Float   @default(0.0)
-  originY     Float   @default(0.0)
-  ao          Boolean @default(false)
-  extraParams Json
+enum WfsType {
+  NONE
+  PWFS1
+  PWFS2
+  OIWFS
 }

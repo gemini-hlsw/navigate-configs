@@ -1,26 +1,47 @@
-import { prisma } from "../../db"
-
-function getUsers() {
-  return prisma.user.findMany()
-}
-
-function getUser(args) {
-  return prisma.user.findFirst({ where: { id: args.id } })
-}
-
-function addUser(args) {
-  return prisma.user.create({ data: args })
-}
+import { prisma } from "../../prisma/db"
 
 export const UserResolver = {
   Query: {
-    user: (_parent, args, _context, _info) => getUser(args),
-    users: () => getUsers()
+    user: (_parent, args, _context, _info) => {
+      return prisma.user.findFirst({
+        where: { pk: args.pk },
+        include: {
+          configurations: {
+            include: {
+              configuration: {
+                include: {
+                  instrument: true,
+                },
+              },
+            },
+          },
+        },
+      })
+    },
+
+    users: (_parent, args, _context, _info) => {
+      return prisma.user.findMany({
+        where: args,
+        orderBy: { pk: "desc" },
+        take: 10,
+        include: {
+          configurations: {
+            include: {
+              configuration: {
+                include: {
+                  instrument: true,
+                },
+              },
+            },
+          },
+        },
+      })
+    },
   },
+
   Mutation: {
-    addUser: (_parent, args, _context, _info) => addUser(args)
+    createUser: (_parent, args, _context, _info) => {
+      return prisma.user.create({ data: args })
+    },
   },
-  // User: {
-  //   birthday: (u) => u.birthday.toISOString()
-  // }
 }
