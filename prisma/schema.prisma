@@ -37,6 +37,8 @@ model Configuration {
   users                 ConfigurationsOnUser[]
   instrument            Instrument?            @relation(fields: [instrumentPk], references: [pk])
   instrumentPk          Int?
+  rotator               Rotator?               @relation(fields: [rotatorPk], references: [pk])
+  rotatorPk             Int?
   observation           Observation?           @relation(fields: [observationPk], references: [pk])
   observationPk         Int?
   selectedConfiguration SelectedConfiguration?
@@ -62,7 +64,7 @@ model GuideProbe {
   targets        Target[]
   probe          String
   guidingType    GuidingType @default(NORMAL)
-  selectedTarget Int // Primary Key of selected base target!
+  selectedTarget Int? // Primary Key of selected base target!
   observation    Observation @relation(fields: [observationPk], references: [pk])
   observationPk  Int
 }
@@ -108,4 +110,16 @@ enum WfsType {
   PWFS1
   PWFS2
   OIWFS
+}
+
+model Rotator {
+  pk             Int             @id @default(autoincrement())
+  configurations Configuration[]
+  angle          Float           @default(0.0)
+  tracking       TrackingType    @default(TRACKING)
+}
+
+enum TrackingType {
+  TRACKING
+  FIXED
 }

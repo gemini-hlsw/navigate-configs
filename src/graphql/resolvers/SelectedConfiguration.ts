@@ -7,6 +7,7 @@ export const SelectedConfigurationResolver = {
         include: {
           configuration: {
             include: {
+              instrument: true,
               observation: {
                 include: {
                   guideProbes: {
@@ -17,7 +18,7 @@ export const SelectedConfigurationResolver = {
                   targets: true,
                 },
               },
-              instrument: true,
+              rotator: true,
             },
           },
         },

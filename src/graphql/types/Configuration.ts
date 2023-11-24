@@ -4,6 +4,7 @@ export const ConfigurationTypeDefs = `#graphql
     name: String
     instrument: Instrument
     observation: Observation
+    rotator: Rotator
     users: [User]
   }
 
@@ -20,6 +21,7 @@ export const ConfigurationTypeDefs = `#graphql
       name: String!
       observationPk: Int
       instrumentPk: Int
+      rotatorPk: Int
     ): Configuration
 
     updateConfiguration(
@@ -27,6 +29,7 @@ export const ConfigurationTypeDefs = `#graphql
       name: String!
       observationPk: Int
       instrumentPk: Int
+      rotatorPk: Int
     ): Configuration
   }
 `

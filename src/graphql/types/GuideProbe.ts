@@ -4,6 +4,7 @@ export const GuideProbeTypeDefs = `#graphql
     pk: Int                   # Primary Key
     probe: String             # Probe Name
     selectedTarget: Int       # Selected Target PK
+    observationPk: Int        # Observation PK
     targets: [Target]         # List of targets
     observation: Observation  # The related observation
   }
@@ -19,8 +20,13 @@ export const GuideProbeTypeDefs = `#graphql
   type Mutation {
     createGuideProbe(
       probe: String!
-      selectedTarget: Int
       observationPk: Int
+      targets: [TargetInput]
+    ): GuideProbe
+
+    updateGuideProbeSelectedTarget(
+      pk: Int!
+      selectedTarget: Int!
     ): GuideProbe
   }
 `

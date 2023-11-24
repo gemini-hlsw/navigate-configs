@@ -36,7 +36,7 @@ export const TargetTypeDefs = `#graphql
     el: El              # Elevation
     dec: Dec            # Declination
     epoch: String       # Epoch of target
-    type: TargetType    # FIXED | SCIENCE | BLINDOFFSET | OIWFS | PWFS1 | PWFS2
+    type: TargetType    # FIXED | SCIENCE | BLINDOFFSET | GUIDE
     createdAt: String   # Datetime when it was created
   }
 

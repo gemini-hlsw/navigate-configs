@@ -8,6 +8,7 @@ export const ConfigurationResolver = {
         include: {
           instrument: true,
           observation: true,
+          rotator: true,
           users: true,
         },
       })
@@ -20,6 +21,7 @@ export const ConfigurationResolver = {
         include: {
           instrument: true,
           observation: true,
+          rotator: true,
           users: true,
         },
       })

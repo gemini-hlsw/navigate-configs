@@ -6,7 +6,11 @@ export const ObservationResolver = {
         where: args,
         orderBy: { pk: "desc" },
         include: {
-          guideProbes: true,
+          guideProbes: {
+            include: {
+              targets: true,
+            },
+          },
           targets: true,
         },
       })
@@ -18,7 +22,11 @@ export const ObservationResolver = {
         orderBy: { pk: "desc" },
         take: 10,
         include: {
-          guideProbes: true,
+          guideProbes: {
+            include: {
+              targets: true,
+            },
+          },
           targets: true,
         },
       })
@@ -90,7 +98,11 @@ export const ObservationResolver = {
         where: { pk: args.pk },
         data: { selectedProbe: args.selectedProbe },
         include: {
-          guideProbes: true,
+          guideProbes: {
+            include: {
+              targets: true,
+            },
+          },
           targets: true,
         },
       })
@@ -101,7 +113,11 @@ export const ObservationResolver = {
         where: { pk: args.pk },
         data: { selectedTarget: args.selectedTarget },
         include: {
-          guideProbes: true,
+          guideProbes: {
+            include: {
+              targets: true,
+            },
+          },
           targets: true,
         },
       })
