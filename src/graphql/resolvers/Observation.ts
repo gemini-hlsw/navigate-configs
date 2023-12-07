@@ -49,12 +49,14 @@ export const ObservationResolver = {
           name: args.name,
           selectedTarget: args.selectedTarget,
           selectedProbe: args.selectedProbe,
+          selectedGuideTarget: args.selectedGuideTarget,
         },
         create: {
           id: id,
           name: args.name,
           selectedTarget: args.selectedTarget,
           selectedProbe: args.selectedProbe,
+          selectedGuideTarget: args.selectedGuideTarget,
         },
         include: {
           guideProbes: true,
@@ -112,6 +114,21 @@ export const ObservationResolver = {
       return prisma.observation.update({
         where: { pk: args.pk },
         data: { selectedTarget: args.selectedTarget },
+        include: {
+          guideProbes: {
+            include: {
+              targets: true,
+            },
+          },
+          targets: true,
+        },
+      })
+    },
+
+    updateObservationSelectedGuideTarget: (_parent, args, _context, _info) => {
+      return prisma.observation.update({
+        where: { pk: args.pk },
+        data: { selectedGuideTarget: args.selectedGuideTarget },
         include: {
           guideProbes: {
             include: {

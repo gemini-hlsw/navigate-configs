@@ -3,8 +3,9 @@ export const ObservationTypeDefs = `#graphql
     pk: Int                         # Primary Key
     id: String                      # Observation ID
     name: String                    # Name of the observation
+    selectedGuideTarget: Int        # Selected guide target pk
+    selectedProbe: Int              # Selected Probe pk
     selectedTarget: Int             # Selected target pk
-    selectedProbe: String           # Selected Probe
     configurations: [Configuration] # List of configurations
     guideProbes: [GuideProbe]       # List of guide probes
     targets: [Target]               # List of targets
@@ -35,26 +36,33 @@ export const ObservationTypeDefs = `#graphql
     createObservation(
       id: String!
       name: String!
-      selectedProbe: String
+      selectedGuideTarget: Int
+      selectedProbe: Int
       selectedTarget: Int
     ): Observation
 
     updateObservation(
       id: String!
       name: String!
-      selectedProbe: String
+      selectedGuideTarget: Int
+      selectedProbe: Int
       selectedTarget: Int
       targets: [TargetInput]
     ): Observation
 
     updateObservationSelectedProbe(
       pk: Int!
-      selectedProbe: String!
+      selectedProbe: Int!
     ): Observation
 
     updateObservationSelectedTarget(
       pk: Int!
       selectedTarget: Int!
+    ): Observation
+
+    updateObservationSelectedGuideTarget(
+      pk: Int!
+      selectedGuideTarget: Int!
     ): Observation
   }
 `

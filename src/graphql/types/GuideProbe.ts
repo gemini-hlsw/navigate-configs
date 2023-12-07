@@ -3,7 +3,6 @@ export const GuideProbeTypeDefs = `#graphql
   type GuideProbe {
     pk: Int                   # Primary Key
     probe: String             # Probe Name
-    selectedTarget: Int       # Selected Target PK
     observationPk: Int        # Observation PK
     targets: [Target]         # List of targets
     observation: Observation  # The related observation
@@ -22,11 +21,6 @@ export const GuideProbeTypeDefs = `#graphql
       probe: String!
       observationPk: Int
       targets: [TargetInput]
-    ): GuideProbe
-
-    updateGuideProbeSelectedTarget(
-      pk: Int!
-      selectedTarget: Int!
     ): GuideProbe
   }
 `

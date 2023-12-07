@@ -45,14 +45,15 @@ model Configuration {
 }
 
 model Observation {
-  pk             Int             @id @default(autoincrement())
-  configurations Configuration[]
-  targets        Target[]
-  guideProbes    GuideProbe[]
-  id             String          @unique // ODB ID
-  name           String
-  selectedTarget Int? // PK of selected base target
-  selectedProbe  String? // Name of selected probe
+  pk                  Int             @id @default(autoincrement())
+  configurations      Configuration[]
+  targets             Target[]
+  guideProbes         GuideProbe[]
+  id                  String          @unique // ODB ID
+  name                String
+  selectedTarget      Int? // PK of selected base target
+  selectedGuideTarget Int? // PK of selected guide target
+  selectedProbe       Int? // Pk of selected probe
 }
 
 enum GuidingType {
@@ -60,13 +61,12 @@ enum GuidingType {
 }
 
 model GuideProbe {
-  pk             Int         @id @default(autoincrement())
-  targets        Target[]
-  probe          String
-  guidingType    GuidingType @default(NORMAL)
-  selectedTarget Int? // Primary Key of selected base target!
-  observation    Observation @relation(fields: [observationPk], references: [pk])
-  observationPk  Int
+  pk            Int         @id @default(autoincrement())
+  targets       Target[]
+  probe         String
+  guidingType   GuidingType @default(NORMAL)
+  observation   Observation @relation(fields: [observationPk], references: [pk])
+  observationPk Int
 }
 
 model Target {

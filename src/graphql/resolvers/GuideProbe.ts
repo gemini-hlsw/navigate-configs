@@ -49,7 +49,6 @@ export const GuideProbeResolver = {
       let guideProbe = await prisma.guideProbe.create({
         data: {
           probe: args.probe,
-          selectedTarget: undefined,
           observationPk: args.observationPk,
         },
         include: {
@@ -85,16 +84,6 @@ export const GuideProbeResolver = {
 
       return await prisma.guideProbe.findFirst({
         where: { pk: guideProbe.pk },
-        include: {
-          targets: true,
-        },
-      })
-    },
-
-    updateGuideProbeSelectedTarget: (_parent, args, _context, _info) => {
-      return prisma.guideProbe.update({
-        where: { pk: args.pk },
-        data: { selectedTarget: args.selectedTarget },
         include: {
           targets: true,
         },

@@ -39,6 +39,10 @@ export const InstrumentTypeDefs = `#graphql
       wfs: WfsType
       extraParams: JSON
     ): [Instrument]
+
+    distinctInstruments: [Instrument]
+    
+    distinctPorts(name: String): [Instrument]
   }
 
   type Mutation {
