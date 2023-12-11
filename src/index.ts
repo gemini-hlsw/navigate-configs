@@ -8,6 +8,7 @@ import { InstrumentResolver } from "./graphql/resolvers/Instrument"
 import { ObservationResolver } from "./graphql/resolvers/Observation"
 import { RotatorResolver } from "./graphql/resolvers/Rotator"
 import { SelectedConfigurationResolver } from "./graphql/resolvers/SelectedConfiguration"
+import { SlewFlagsResolver } from "./graphql/resolvers/SlewFlags"
 import { TargetResolver } from "./graphql/resolvers/Target"
 import { UserResolver } from "./graphql/resolvers/User"
 
@@ -18,6 +19,7 @@ import { InstrumentTypeDefs } from "./graphql/types/Instrument"
 import { ObservationTypeDefs } from "./graphql/types/Observation"
 import { RotatorTypeDefs } from "./graphql/types/Rotator"
 import { SelectedConfigurationTypeDefs } from "./graphql/types/SelectedConfiguration"
+import { SlewFlagsTypeDefs } from "./graphql/types/SlewFlags"
 import { TargetTypeDefs } from "./graphql/types/Target"
 import { UserTypeDefs } from "./graphql/types/User"
 
@@ -33,6 +35,7 @@ const resolvers = {
     ...ObservationResolver.Query,
     ...RotatorResolver.Query,
     ...SelectedConfigurationResolver.Query,
+    ...SlewFlagsResolver.Query,
     ...TargetResolver.Query,
     ...UserResolver.Query,
   },
@@ -43,6 +46,7 @@ const resolvers = {
     ...ObservationResolver.Mutation,
     ...RotatorResolver.Mutation,
     ...SelectedConfigurationResolver.Mutation,
+    ...SlewFlagsResolver.Mutation,
     ...TargetResolver.Mutation,
     ...UserResolver.Mutation,
   },
@@ -57,6 +61,7 @@ const server = new ApolloServer({
     ObservationTypeDefs,
     RotatorTypeDefs,
     SelectedConfigurationTypeDefs,
+    SlewFlagsTypeDefs,
     TargetTypeDefs,
     UserTypeDefs,
   ],

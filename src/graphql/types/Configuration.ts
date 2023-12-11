@@ -5,6 +5,7 @@ export const ConfigurationTypeDefs = `#graphql
     instrument: Instrument
     observation: Observation
     rotator: Rotator
+    slewFlags: SlewFlags
     users: [User]
   }
 
@@ -22,6 +23,7 @@ export const ConfigurationTypeDefs = `#graphql
       observationPk: Int
       instrumentPk: Int
       rotatorPk: Int
+      slewFlagsPk: Int
     ): Configuration
 
     updateConfiguration(
@@ -30,6 +32,7 @@ export const ConfigurationTypeDefs = `#graphql
       observationPk: Int
       instrumentPk: Int
       rotatorPk: Int
+      slewFlagsPk: Int
     ): Configuration
   }
 `

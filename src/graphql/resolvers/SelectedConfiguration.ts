@@ -19,6 +19,7 @@ export const SelectedConfigurationResolver = {
                 },
               },
               rotator: true,
+              slewFlags: true,
             },
           },
         },

@@ -9,6 +9,7 @@ export const ConfigurationResolver = {
           instrument: true,
           observation: true,
           rotator: true,
+          slewFlags: true,
           users: true,
         },
       })
@@ -22,6 +23,7 @@ export const ConfigurationResolver = {
           instrument: true,
           observation: true,
           rotator: true,
+          slewFlags: true,
           users: true,
         },
       })

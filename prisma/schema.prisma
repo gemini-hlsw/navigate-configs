@@ -41,6 +41,8 @@ model Configuration {
   rotatorPk             Int?
   observation           Observation?           @relation(fields: [observationPk], references: [pk])
   observationPk         Int?
+  slewFlags             SlewFlags?             @relation(fields: [slewFlagsPk], references: [pk])
+  slewFlagsPk           Int?
   selectedConfiguration SelectedConfiguration?
 }
 
@@ -122,4 +124,25 @@ model Rotator {
 enum TrackingType {
   TRACKING
   FIXED
+}
+
+model SlewFlags {
+  pk                       Int             @id @default(autoincrement())
+  zeroChopThrow            Boolean
+  zeroSourceOffset         Boolean
+  zeroSourceDiffTrack      Boolean
+  zeroMountOffset          Boolean
+  zeroMountDiffTrack       Boolean
+  shortcircuitTargetFilter Boolean
+  shortcircuitMountFilter  Boolean
+  resetPointing            Boolean
+  stopGuide                Boolean
+  zeroGuideOffset          Boolean
+  zeroInstrumentOffset     Boolean
+  autoparkPwfs1            Boolean
+  autoparkPwfs2            Boolean
+  autoparkOiwfs            Boolean
+  autoparkGems             Boolean
+  autoparkAowfs            Boolean
+  Configuration            Configuration[]
 }
