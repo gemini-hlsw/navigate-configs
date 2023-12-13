@@ -1,3 +1,4 @@
+import { TargetType } from "@prisma/client"
 import { prisma } from "../../prisma/db"
 
 export const TargetResolver = {
@@ -30,6 +31,39 @@ export const TargetResolver = {
       return prisma.target.create({
         data: args,
       })
+    },
+
+    updateTarget: async (_parent, args, _context, _info) => {
+      return prisma.target.update({
+        where: { pk: args.pk },
+        data: args,
+      })
+    },
+
+    removeAndCreateBaseTargets: async (_parent, args, _context, _info) => {
+      await prisma.target.deleteMany({
+        where: {},
+      })
+      let results = []
+      for (let i = 0; i < args.targets.length; i++) {
+        let r = await prisma.target.create({ data: args.targets[i] })
+        results.push(r)
+      }
+      return results
+    },
+
+    removeAndCreateWfsTargets: async (_parent, args, _context, _info) => {
+      await prisma.target.deleteMany({
+        where: {
+          type: args.wfs,
+        },
+      })
+      let results = []
+      for (let i = 0; i < args.targets.length; i++) {
+        let r = await prisma.target.create({ data: args.targets[i] })
+        results.push(r)
+      }
+      return results
     },
   },
 }
