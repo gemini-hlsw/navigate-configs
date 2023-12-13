@@ -48,6 +48,17 @@ export const INITIAL_INSTRUMENTS: InstrumentInput[] = [
     extraParams: {},
   },
   {
+    wfs: "NONE",
+    iaa: 359.877,
+    issPort: 3,
+    focusOffset: 0.0,
+    name: "GMOS_NORTH",
+    ao: false,
+    originX: 0.0,
+    originY: 0.0,
+    extraParams: {},
+  },
+  {
     wfs: "PWFS1",
     iaa: 359.877,
     issPort: 3,
