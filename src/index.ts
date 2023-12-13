@@ -1,5 +1,6 @@
 import { ApolloServer } from "@apollo/server"
 import { startStandaloneServer } from "@apollo/server/standalone"
+import { populateDb } from "./prisma/queries/main"
 
 // Resolvers
 import { ConfigurationResolver } from "./graphql/resolvers/Configuration"
@@ -53,12 +54,12 @@ const server = new ApolloServer({
   resolvers,
 })
 
-const { url } = await startStandaloneServer(server, {
-  listen: { port: parseInt(process.env.SERVER_PORT) ?? 4000 },
-})
-
-// Populate | Get Info from database
-import { main } from "./prisma/queries/main"
-await main()
-
-console.log(`🚀  Server ready at: ${url}`)
+if (process.argv.includes("populate")) {
+  // Populate DB
+  await populateDb()
+} else {
+  const { url } = await startStandaloneServer(server, {
+    listen: { port: parseInt(process.env.SERVER_PORT) ?? 4000 },
+  })
+  console.log(`🚀  Server ready at: ${url}`)
+}

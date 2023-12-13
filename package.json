@@ -5,8 +5,10 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "compile": "tsc",
-    "start": "pnpm compile && node --es-module-specifier-resolution=node ./dist/index.js"
+    "build": "tsc",
+    "start": "yarn build && node --es-module-specifier-resolution=node ./dist/index.js",
+    "preview": "node --es-module-specifier-resolution=node ./dist/index.js",
+    "populate": "node --es-module-specifier-resolution=node ./dist/index.js populate"
   },
   "dependencies": {
     "@apollo/server": "^4.5.0",
