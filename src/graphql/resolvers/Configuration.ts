@@ -3,30 +3,7 @@ import { prisma } from "../../prisma/db"
 export const ConfigurationResolver = {
   Query: {
     configuration: (_parent, args, _context, _info) => {
-      return prisma.configuration.findFirst({
-        where: args,
-        include: {
-          instrument: true,
-          observation: true,
-          rotator: true,
-          slewFlags: true,
-          users: true,
-        },
-      })
-    },
-    configurations: (_parent, args, _context, _info) => {
-      return prisma.configuration.findMany({
-        where: args,
-        orderBy: { pk: "desc" },
-        take: 10,
-        include: {
-          instrument: true,
-          observation: true,
-          rotator: true,
-          slewFlags: true,
-          users: true,
-        },
-      })
+      return prisma.configuration.findFirst({ where: args })
     },
   },
   Mutation: {

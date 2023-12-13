@@ -4,7 +4,9 @@ export const TargetTypeDefs = `#graphql
     FIXED
     SCIENCE
     BLINDOFFSET
-    GUIDE
+    PWFS1
+    PWFS2
+    OIWFS
   }
 
   type RA {
@@ -36,7 +38,7 @@ export const TargetTypeDefs = `#graphql
     el: El              # Elevation
     dec: Dec            # Declination
     epoch: String       # Epoch of target
-    type: TargetType    # FIXED | SCIENCE | BLINDOFFSET | GUIDE
+    type: TargetType    # FIXED | SCIENCE | BLINDOFFSET | PWFS1 | PWFS2 | OIWFS
     createdAt: String   # Datetime when it was created
   }
 
@@ -45,7 +47,16 @@ export const TargetTypeDefs = `#graphql
   # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
     target(pk: Int, id: String, name: String): Target
-    targets: [Target]
+    targets(type: TargetType): [Target]
+  }
+
+  input TargetInput {
+    id: String
+    name: String
+    coord1: Float
+    coord2: Float
+    epoch: String
+    type: String
   }
 
   type Mutation {
@@ -59,5 +70,24 @@ export const TargetTypeDefs = `#graphql
       epoch: String
       type: TargetType!
     ): Target
+
+    updateTarget(
+      pk: Int!
+      id: String
+      name: String
+      coord1: Float
+      coord2: Float
+      epoch: String
+      type: TargetType
+    ): Target
+
+    removeAndCreateBaseTargets(
+      targets: [TargetInput]
+    ): [Target]
+
+    removeAndCreateWfsTargets(
+      wfs: TargetType
+      targets: [TargetInput]
+    ): [Target]
   }
 `

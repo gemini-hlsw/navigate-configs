@@ -20,9 +20,7 @@ export const SlewFlagsTypeDefs = `#graphql
   }
 
   type Query {
-    slewFlags(
-      pk: Int
-    ): SlewFlags
+    slewFlags: SlewFlags
   }
 
   type Mutation {

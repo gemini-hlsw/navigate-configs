@@ -19,7 +19,6 @@ export const InstrumentTypeDefs = `#graphql
     originY: Float                  # Origin of instrument Y position
     ao: Boolean                     # Adaptive Optics is being used?
     extraParams: JSON               # Instrument dependent set of parameters
-    configurations: [Configuration] # List of posible configurations
   }
 
   # The "Query" type is special: it lists all of the available queries that

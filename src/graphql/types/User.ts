@@ -2,7 +2,6 @@ export const UserTypeDefs = `#graphql
   type User {
     pk: Int
     name: String
-    configurations: [Configuration]
   }
 
   # The "Query" type is special: it lists all of the available queries that

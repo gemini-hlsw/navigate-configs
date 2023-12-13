@@ -11,100 +11,66 @@ datasource db {
 }
 
 model User {
-  pk             Int                    @id @default(autoincrement())
-  configurations ConfigurationsOnUser[]
-  name           String
-}
-
-model SelectedConfiguration {
-  pk              Int           @id @default(autoincrement())
-  configuration   Configuration @relation(fields: [configurationPk], references: [pk])
-  configurationPk Int           @unique
-}
-
-model ConfigurationsOnUser {
-  user            User          @relation(fields: [userPk], references: [pk])
-  userPk          Int
-  configuration   Configuration @relation(fields: [configurationPk], references: [pk])
-  configurationPk Int
-
-  @@id([userPk, configurationPk])
+  pk   Int    @id @default(autoincrement())
+  name String
 }
 
 model Configuration {
-  pk                    Int                    @id @default(autoincrement())
-  name                  String
-  users                 ConfigurationsOnUser[]
-  instrument            Instrument?            @relation(fields: [instrumentPk], references: [pk])
-  instrumentPk          Int?
-  rotator               Rotator?               @relation(fields: [rotatorPk], references: [pk])
-  rotatorPk             Int?
-  observation           Observation?           @relation(fields: [observationPk], references: [pk])
-  observationPk         Int?
-  slewFlags             SlewFlags?             @relation(fields: [slewFlagsPk], references: [pk])
-  slewFlagsPk           Int?
-  selectedConfiguration SelectedConfiguration?
+  pk               Int         @id @default(autoincrement())
+  site             SiteType    @default(GN)
+  selectedTarget   Int?
+  selectedOiTarget Int?
+  selectedP1Target Int?
+  selectedP2Target Int?
+  oiGuidingType    GuidingType
+  p1GuidingType    GuidingType
+  p2GuidingType    GuidingType
+  obsTitle         String?
+  obsId            String?
+  obsInstrument    String?
+  obsSubtitle      String?
 }
 
-model Observation {
-  pk                  Int             @id @default(autoincrement())
-  configurations      Configuration[]
-  targets             Target[]
-  guideProbes         GuideProbe[]
-  id                  String          @unique // ODB ID
-  name                String
-  selectedTarget      Int? // PK of selected base target
-  selectedGuideTarget Int? // PK of selected guide target
-  selectedProbe       Int? // Pk of selected probe
+enum SiteType {
+  GN
+  GS
 }
 
 enum GuidingType {
   NORMAL
 }
 
-model GuideProbe {
-  pk            Int         @id @default(autoincrement())
-  targets       Target[]
-  probe         String
-  guidingType   GuidingType @default(NORMAL)
-  observation   Observation @relation(fields: [observationPk], references: [pk])
-  observationPk Int
-}
-
 model Target {
-  pk            Int          @id @default(autoincrement())
-  observation   Observation? @relation(fields: [observationPk], references: [pk])
-  observationPk Int?
-  guideProbe    GuideProbe?  @relation(fields: [guideProbePk], references: [pk])
-  guideProbePk  Int?
-  id            String       @unique // ODB ID
-  name          String       @default("Test")
-  coord1        Float // RA or Az
-  coord2        Float // Dec or El
-  epoch         String       @default("J2000.000")
-  type          TargetType   @default(SCIENCE) // FIXED | SCIENCE | BLINDOFFSET | OIWFS | PWFS1 | PWFS2
-  createdAt     DateTime     @default(now())
+  pk        Int        @id @default(autoincrement())
+  id        String?
+  name      String     @default("Test")
+  coord1    Float // RA or Az
+  coord2    Float // Dec or El
+  epoch     String     @default("J2000.000")
+  type      TargetType @default(SCIENCE) // FIXED | SCIENCE | BLINDOFFSET | OIWFS | PWFS1 | PWFS2
+  createdAt DateTime   @default(now())
 }
 
 enum TargetType {
   FIXED
   SCIENCE
   BLINDOFFSET
-  GUIDE
+  OIWFS
+  PWFS1
+  PWFS2
 }
 
 model Instrument {
-  pk             Int             @id @default(autoincrement())
-  configurations Configuration[]
-  name           String
-  iaa            Float           @default(0.0)
-  issPort        Int
-  focusOffset    Float           @default(0.0)
-  wfs            WfsType         @default(NONE)
-  originX        Float           @default(0.0)
-  originY        Float           @default(0.0)
-  ao             Boolean         @default(false)
-  extraParams    Json
+  pk          Int     @id @default(autoincrement())
+  name        String
+  iaa         Float   @default(0.0)
+  issPort     Int
+  focusOffset Float   @default(0.0)
+  wfs         WfsType @default(NONE)
+  originX     Float   @default(0.0)
+  originY     Float   @default(0.0)
+  ao          Boolean @default(false)
+  extraParams Json
 }
 
 enum WfsType {
@@ -115,10 +81,9 @@ enum WfsType {
 }
 
 model Rotator {
-  pk             Int             @id @default(autoincrement())
-  configurations Configuration[]
-  angle          Float           @default(0.0)
-  tracking       TrackingType    @default(TRACKING)
+  pk       Int          @id @default(autoincrement())
+  angle    Float        @default(0.0)
+  tracking TrackingType @default(TRACKING)
 }
 
 enum TrackingType {
@@ -127,7 +92,7 @@ enum TrackingType {
 }
 
 model SlewFlags {
-  pk                       Int             @id @default(autoincrement())
+  pk                       Int     @id @default(autoincrement())
   zeroChopThrow            Boolean
   zeroSourceOffset         Boolean
   zeroSourceDiffTrack      Boolean
@@ -144,5 +109,4 @@ model SlewFlags {
   autoparkOiwfs            Boolean
   autoparkGems             Boolean
   autoparkAowfs            Boolean
-  Configuration            Configuration[]
 }
