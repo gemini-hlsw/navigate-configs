@@ -13,6 +13,6 @@ COPY package.json yarn.lock ./
 RUN yarn install
 
 COPY . .
-RUN yarn build \
-  && yarn prisma generate
+RUN yarn prisma generate \
+  && yarn build
 CMD ["yarn", "preview"]
