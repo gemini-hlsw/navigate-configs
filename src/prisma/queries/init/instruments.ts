@@ -257,3 +257,43 @@ export const INITIAL_INSTRUMENTS: InstrumentInput[] = [
     extraParams: {},
   },
 ]
+
+interface GemsInstrumentType {
+  pk?: number
+  beamsplitter: string
+  adc: boolean
+  astrometricMode: string
+}
+
+export const INITIAL_GEMS_INSTRUMENT: GemsInstrumentType = {
+  beamsplitter: "400 nm",
+  adc: true,
+  astrometricMode: "Best",
+}
+
+interface AltairInstrumentType {
+  pk?: number
+  beamsplitter: string
+  startMagnitude: number
+  seeing: number
+  windSpeed: number
+  forceMode: boolean
+  ndFilter: boolean
+  fieldLens: boolean
+  deployAdc: boolean
+  adjustAdc: boolean
+  lgs: boolean
+}
+
+export const INITIAL_ALTAIR_INSTRUMENT: AltairInstrumentType = {
+  beamsplitter: "400 nm",
+  startMagnitude: 10.0,
+  seeing: 0.8,
+  windSpeed: 20,
+  forceMode: true,
+  ndFilter: true,
+  fieldLens: true,
+  deployAdc: true,
+  adjustAdc: true,
+  lgs: true,
+}

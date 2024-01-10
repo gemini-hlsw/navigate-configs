@@ -1,42 +1,82 @@
 import { prisma } from "../db"
 import { INITIAL_CONFIGURATION } from "./init/configuration"
-import { INITIAL_INSTRUMENTS } from "./init/instruments"
+import {
+  INITIAL_ALTAIR_GUIDE_LOOP,
+  INITIAL_GEMS_GUIDE_LOOP,
+  INITIAL_GUIDE_LOOP,
+} from "./init/guideLoop"
+import {
+  INITIAL_ALTAIR_INSTRUMENT,
+  INITIAL_GEMS_INSTRUMENT,
+  INITIAL_INSTRUMENTS,
+} from "./init/instruments"
+import { INITIAL_MECHANISM } from "./init/mechanism"
 import { INITIAL_ROTATOR } from "./init/rotator"
 import { INITIAL_SLEW_FLAGS } from "./init/slewFlags"
 import { INITIAL_USERS } from "./init/users"
 
 async function createUsers() {
   console.log("Creating user reader")
-  return await prisma.user.createMany({
+  await prisma.user.createMany({
     data: INITIAL_USERS,
   })
 }
 
 async function createInstruments() {
   console.log("Creating initial instruments")
-  return await prisma.instrument.createMany({
+  await prisma.instrument.createMany({
     data: INITIAL_INSTRUMENTS,
+  })
+  console.log("Creating initial altair instrument")
+  await prisma.altairInstrument.create({
+    data: INITIAL_ALTAIR_INSTRUMENT,
+  })
+  console.log("Creating initial gems instrument")
+  await prisma.gemsInstrument.create({
+    data: INITIAL_GEMS_INSTRUMENT,
   })
 }
 
 async function createRotator() {
   console.log("Creating initial rotator")
-  return await prisma.rotator.create({
+  await prisma.rotator.create({
     data: INITIAL_ROTATOR,
   })
 }
 
 async function createSlewFlags() {
   console.log("Creating initial slew flags")
-  return await prisma.slewFlags.create({
+  await prisma.slewFlags.create({
     data: INITIAL_SLEW_FLAGS,
   })
 }
 
 async function createConfiguration() {
   console.log("Creating initial configuration")
-  return await prisma.configuration.create({
+  await prisma.configuration.create({
     data: INITIAL_CONFIGURATION,
+  })
+}
+
+async function createGuideLoopInfo() {
+  console.log("Creating altair guide loop info")
+  await prisma.altairGuideLoop.create({
+    data: INITIAL_ALTAIR_GUIDE_LOOP,
+  })
+  console.log("Creating gems guide loop info")
+  await prisma.gemsGuideLoop.create({
+    data: INITIAL_GEMS_GUIDE_LOOP,
+  })
+  console.log("Creating general guide loop info")
+  await prisma.guideLoop.create({
+    data: INITIAL_GUIDE_LOOP,
+  })
+}
+
+async function createMechanism() {
+  console.log("Creating mechanism info")
+  await prisma.mechanism.create({
+    data: INITIAL_MECHANISM,
   })
 }
 
@@ -46,4 +86,6 @@ export async function write() {
   await createSlewFlags()
   await createRotator()
   await createConfiguration()
+  await createGuideLoopInfo()
+  await createMechanism()
 }

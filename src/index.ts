@@ -3,16 +3,28 @@ import { startStandaloneServer } from "@apollo/server/standalone"
 import { populateDb } from "./prisma/queries/main"
 
 // Resolvers
+import { AltairGuideLoopResolver } from "./graphql/resolvers/AltairGuideLoop"
+import { AltairInstrumentResolver } from "./graphql/resolvers/AltairInstrument"
 import { ConfigurationResolver } from "./graphql/resolvers/Configuration"
+import { GemsGuideLoopResolver } from "./graphql/resolvers/GemsGuideLoop"
+import { GemsInstrumentResolver } from "./graphql/resolvers/GemsInstrument"
+import { GuideLoopResolver } from "./graphql/resolvers/GuideLoop"
 import { InstrumentResolver } from "./graphql/resolvers/Instrument"
+import { MechanismResolver } from "./graphql/resolvers/Mechanism"
 import { RotatorResolver } from "./graphql/resolvers/Rotator"
 import { SlewFlagsResolver } from "./graphql/resolvers/SlewFlags"
 import { TargetResolver } from "./graphql/resolvers/Target"
 import { UserResolver } from "./graphql/resolvers/User"
 
 // TypeDefs
+import { AltairGuideLoopTypeDefs } from "./graphql/types/AltairGuideLoop"
+import { AltairInstrumentTypeDefs } from "./graphql/types/AltairInstrument"
 import { ConfigurationTypeDefs } from "./graphql/types/Configuration"
+import { GemsGuideLoopTypeDefs } from "./graphql/types/GemsGuideLoop"
+import { GemsInstrumentTypeDefs } from "./graphql/types/GemsInstrument"
+import { GuideLoopTypeDefs } from "./graphql/types/GuideLoop"
 import { InstrumentTypeDefs } from "./graphql/types/Instrument"
+import { MechanismTypeDefs } from "./graphql/types/Mechanism"
 import { RotatorTypeDefs } from "./graphql/types/Rotator"
 import { SlewFlagsTypeDefs } from "./graphql/types/SlewFlags"
 import { TargetTypeDefs } from "./graphql/types/Target"
@@ -24,16 +36,28 @@ import GraphQLJSON from "graphql-type-json"
 const resolvers = {
   JSON: GraphQLJSON,
   Query: {
+    ...AltairGuideLoopResolver.Query,
+    ...AltairInstrumentResolver.Query,
     ...ConfigurationResolver.Query,
+    ...GemsGuideLoopResolver.Query,
+    ...GemsInstrumentResolver.Query,
+    ...GuideLoopResolver.Query,
     ...InstrumentResolver.Query,
+    ...MechanismResolver.Query,
     ...RotatorResolver.Query,
     ...SlewFlagsResolver.Query,
     ...TargetResolver.Query,
     ...UserResolver.Query,
   },
   Mutation: {
+    ...AltairGuideLoopResolver.Mutation,
+    ...AltairInstrumentResolver.Mutation,
     ...ConfigurationResolver.Mutation,
+    ...GemsGuideLoopResolver.Mutation,
+    ...GemsInstrumentResolver.Mutation,
+    ...GuideLoopResolver.Mutation,
     ...InstrumentResolver.Mutation,
+    ...MechanismResolver.Mutation,
     ...RotatorResolver.Mutation,
     ...SlewFlagsResolver.Mutation,
     ...TargetResolver.Mutation,
@@ -44,8 +68,14 @@ const resolvers = {
 // Create and start ApolloServer
 const server = new ApolloServer({
   typeDefs: [
+    AltairGuideLoopTypeDefs,
+    AltairInstrumentTypeDefs,
     ConfigurationTypeDefs,
+    GemsGuideLoopTypeDefs,
+    GemsInstrumentTypeDefs,
+    GuideLoopTypeDefs,
     InstrumentTypeDefs,
+    MechanismTypeDefs,
     RotatorTypeDefs,
     SlewFlagsTypeDefs,
     TargetTypeDefs,
