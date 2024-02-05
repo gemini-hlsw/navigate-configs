@@ -1,10 +1,5 @@
 FROM node:slim AS builder
 
-# RUN apt-get update \
-#   && apt-get install -y openssl \
-#   && rm -rf /var/lib/apt/lists/* \
-#   && rm -rf /var/cache/apt/*
-
 # Create app directory
 WORKDIR /usr/src/app
 
