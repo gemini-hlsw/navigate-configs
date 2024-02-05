@@ -1,19 +1,19 @@
-import { prisma } from "../db"
-import { INITIAL_CONFIGURATION } from "./init/configuration"
+import { prisma } from "../db.js"
+import { INITIAL_CONFIGURATION } from "./init/configuration.js"
 import {
   INITIAL_ALTAIR_GUIDE_LOOP,
   INITIAL_GEMS_GUIDE_LOOP,
   INITIAL_GUIDE_LOOP,
-} from "./init/guideLoop"
+} from "./init/guideLoop.js"
 import {
   INITIAL_ALTAIR_INSTRUMENT,
   INITIAL_GEMS_INSTRUMENT,
   INITIAL_INSTRUMENTS,
-} from "./init/instruments"
-import { INITIAL_MECHANISM } from "./init/mechanism"
-import { INITIAL_ROTATOR } from "./init/rotator"
-import { INITIAL_SLEW_FLAGS } from "./init/slewFlags"
-import { INITIAL_USERS } from "./init/users"
+} from "./init/instruments.js"
+import { INITIAL_MECHANISM } from "./init/mechanism.js"
+import { INITIAL_ROTATOR } from "./init/rotator.js"
+import { INITIAL_SLEW_FLAGS } from "./init/slewFlags.js"
+import { INITIAL_USERS } from "./init/users.js"
 
 async function createUsers() {
   console.log("Creating user reader")

@@ -1,5 +1,4 @@
-import { TargetType } from "@prisma/client"
-import { prisma } from "../../prisma/db"
+import { prisma } from "../../prisma/db.js"
 
 export const TargetResolver = {
   Query: {
