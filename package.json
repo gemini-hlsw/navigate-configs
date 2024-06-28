@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "yarn build && node --es-module-specifier-resolution=node ./dist/index.js",
+    "start": "npm run build && node --es-module-specifier-resolution=node ./dist/index.js",
     "preview": "node --es-module-specifier-resolution=node ./dist/index.js",
     "populate": "prisma migrate deploy && node --es-module-specifier-resolution=node ./dist/index.js populate"
   },

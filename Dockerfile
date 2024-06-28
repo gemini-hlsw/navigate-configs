@@ -1,32 +1,32 @@
-FROM node:slim AS builder
-
-# Create app directory
-WORKDIR /usr/src/app
-
-# Install app dependencies
-COPY package.json yarn.lock ./
-RUN yarn install
-
-COPY . .
-RUN yarn prisma generate && yarn build
-
-
-FROM node:slim AS runner
+FROM node:22-alpine AS runner
 ENV NODE_ENV=production
 
 # Create app directory
 WORKDIR /usr/src/app
-
-RUN apt-get update \
-  && apt-get install -y openssl \
+RUN apk update \
+  && apk add openssl \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /var/cache/apt/*
 
+# Create software user
+RUN addgroup -S software -g 3624 && adduser -S software -u 3624 -G software
+RUN chown -R software:software /usr/src/app
+USER software
 
-COPY package.json ./
-COPY prisma ./prisma
-COPY --from=builder /usr/src/app/dist ./dist
+# Copy dependency definitions
+COPY --chown=software:software package.json .
 
-RUN yarn install && yarn prisma generate
+# Install dependencies
+RUN npm install
 
-CMD ["yarn", "preview"]
+# Copy all the remaining code
+COPY --chown=software:software . .
+
+# Build
+RUN npm run build
+
+# Generate prisma definitions
+RUN npx prisma generate
+
+# Start command
+CMD ["./start-server.sh"]
