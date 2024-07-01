@@ -89,7 +89,7 @@ if (process.argv.includes("populate")) {
   await populateDb()
 } else {
   const { url } = await startStandaloneServer(server, {
-    listen: { port: parseInt(process.env.SERVER_PORT) ?? 4000 },
+    listen: { port: parseInt(process.env.SERVER_PORT) || 4000 },
   })
   console.log(`🚀  Server ready at: ${url}`)
 }

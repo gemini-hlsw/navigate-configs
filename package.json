@@ -4,21 +4,25 @@
   "main": "index.js",
   "license": "MIT",
   "type": "module",
+  "packageManager": "pnpm@9.4.0",
   "scripts": {
+    "generate": "prisma generate",
+    "prebuild": "pnpm generate",
     "build": "tsc",
-    "start": "npm run build && node --es-module-specifier-resolution=node ./dist/index.js",
-    "preview": "node --es-module-specifier-resolution=node ./dist/index.js",
-    "populate": "prisma migrate deploy && node --es-module-specifier-resolution=node ./dist/index.js populate"
+    "start": "pnpm build && pnpm preview",
+    "preview": "node --enable-source-maps --es-module-specifier-resolution=node ./dist/index.js",
+    "populate": "prisma migrate deploy && node --enable-source-maps --es-module-specifier-resolution=node ./dist/index.js populate",
+    "dev": "node --watch --enable-source-maps --es-module-specifier-resolution=node ./dist/index.js"
   },
   "dependencies": {
-    "@apollo/server": "^4.5.0",
+    "@apollo/server": "^4.10.4",
     "@prisma/client": "^4.13.0",
-    "graphql": "^16.6.0",
+    "graphql": "^16.9.0",
     "graphql-type-json": "^0.3.2",
     "prisma": "^4.13.0"
   },
   "devDependencies": {
-    "@types/node": "^18.15.11",
-    "typescript": "^5.0.2"
+    "@types/node": "^20.14.9",
+    "typescript": "^5.5.2"
   }
 }
