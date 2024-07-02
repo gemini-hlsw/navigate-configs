@@ -1,14 +1,14 @@
 export const AltairGuideLoopTypeDefs = `#graphql
   type AltairGuideLoop {
-    pk: Int
-    aoEnabled: Boolean
-    oiBlend: Boolean
-    focus: Boolean
-    p1Ttf: Boolean
-    strap: Boolean
-    oiTtf: Boolean
-    ttgs: Boolean
-    sfo: Boolean
+    pk: Int!
+    aoEnabled: Boolean!
+    oiBlend: Boolean!
+    focus: Boolean!
+    p1Ttf: Boolean!
+    strap: Boolean!
+    oiTtf: Boolean!
+    ttgs: Boolean!
+    sfo: Boolean!
   }
 
   type Query {
@@ -26,6 +26,6 @@ export const AltairGuideLoopTypeDefs = `#graphql
       oiTtf: Boolean
       ttgs: Boolean
       sfo: Boolean
-    ): AltairGuideLoop
+    ): AltairGuideLoop!
   }
-`
+`;

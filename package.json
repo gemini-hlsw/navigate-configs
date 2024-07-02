@@ -10,18 +10,24 @@
     "prebuild": "pnpm generate",
     "build": "tsc",
     "start": "pnpm build && pnpm preview",
-    "preview": "node --enable-source-maps --es-module-specifier-resolution=node ./dist/index.js",
-    "populate": "prisma migrate deploy && node --enable-source-maps --es-module-specifier-resolution=node ./dist/index.js populate",
-    "dev": "node --watch --enable-source-maps --es-module-specifier-resolution=node ./dist/index.js"
+    "preview": "node --enable-source-maps ./dist/index.js",
+    "populate": "prisma migrate deploy && node --enable-source-maps ./dist/index.js populate",
+    "dev": "node --watch --enable-source-maps ./dist/index.js",
+    "codegen": "graphql-codegen --config tasks/codegen.ts",
+    "codegen:watch": "pnpm codegen --watch 'src/graphql/types/*.ts'"
   },
   "dependencies": {
     "@apollo/server": "^4.10.4",
     "@prisma/client": "^4.13.0",
     "graphql": "^16.9.0",
-    "graphql-type-json": "^0.3.2",
+    "graphql-scalars": "^1.23.0",
     "prisma": "^4.13.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "5.0.2",
+    "@graphql-codegen/typescript": "4.0.8",
+    "@graphql-codegen/typescript-resolvers": "4.2.0",
+    "@parcel/watcher": "^2.4.1",
     "@types/node": "^20.14.9",
     "typescript": "^5.5.2"
   }

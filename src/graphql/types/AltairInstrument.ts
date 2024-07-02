@@ -1,16 +1,16 @@
 export const AltairInstrumentTypeDefs = `#graphql
   type AltairInstrument {
-    pk: Int
-    beamsplitter: String
-    startMagnitude: Float
-    seeing: Float
-    windSpeed: Float
-    forceMode: Boolean
-    ndFilter: Boolean
-    fieldLens: Boolean
-    deployAdc: Boolean
-    adjustAdc: Boolean
-    lgs: Boolean
+    pk: Int!
+    beamsplitter: String!
+    startMagnitude: Float!
+    seeing: Float!
+    windSpeed: Float!
+    forceMode: Boolean!
+    ndFilter: Boolean!
+    fieldLens: Boolean!
+    deployAdc: Boolean!
+    adjustAdc: Boolean!
+    lgs: Boolean!
   }
 
   type Query {
@@ -30,6 +30,6 @@ export const AltairInstrumentTypeDefs = `#graphql
       deployAdc: Boolean
       adjustAdc: Boolean
       lgs: Boolean
-    ): AltairInstrument
+    ): AltairInstrument!
   }
-`
+`;

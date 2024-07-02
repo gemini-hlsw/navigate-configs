@@ -10,36 +10,36 @@ export const TargetTypeDefs = `#graphql
   }
 
   type RA {
-    degrees: Float
-    hms: String
+    degrees: Float!
+    hms: String!
   }
 
   type Dec {
-    degrees: Float
-    dms: String
+    degrees: Float!
+    dms: String!
   }
 
   type Az {
-    degrees: Float
-    dms: String
+    degrees: Float!
+    dms: String!
   }
 
   type El {
-    degrees: Float
-    dms: String
+    degrees: Float!
+    dms: String!
   }
 
   type Target {
-    pk: Int             # Primary Key
+    pk: Int!             # Primary Key
     id: String          # Target ID
-    name: String        # Name of the target
+    name: String!        # Name of the target
     ra: RA              # Right Ascention
     az: Az              # Azimuth
     el: El              # Elevation
     dec: Dec            # Declination
-    epoch: String       # Epoch of target
-    type: TargetType    # FIXED | SCIENCE | BLINDOFFSET | PWFS1 | PWFS2 | OIWFS
-    createdAt: String   # Datetime when it was created
+    epoch: String!       # Epoch of target
+    type: TargetType!    # FIXED | SCIENCE | BLINDOFFSET | PWFS1 | PWFS2 | OIWFS
+    createdAt: DateTime!   # Datetime when it was created
   }
 
   # The "Query" type is special: it lists all of the available queries that
@@ -47,7 +47,7 @@ export const TargetTypeDefs = `#graphql
   # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
     target(pk: Int, id: String, name: String): Target
-    targets(type: TargetType): [Target]
+    targets(type: TargetType): [Target!]!
   }
 
   input TargetInput {
@@ -69,7 +69,7 @@ export const TargetTypeDefs = `#graphql
       el: Float
       epoch: String
       type: TargetType!
-    ): Target
+    ): Target!
 
     updateTarget(
       pk: Int!
@@ -79,15 +79,15 @@ export const TargetTypeDefs = `#graphql
       coord2: Float
       epoch: String
       type: TargetType
-    ): Target
+    ): Target!
 
     removeAndCreateBaseTargets(
-      targets: [TargetInput]
-    ): [Target]
+      targets: [TargetInput!]
+    ): [Target!]!
 
     removeAndCreateWfsTargets(
       wfs: TargetType
-      targets: [TargetInput]
-    ): [Target]
+      targets: [TargetInput!]
+    ): [Target!]!
   }
-`
+`;

@@ -1,6 +1,7 @@
 import { prisma } from "../../prisma/db.js"
+import { Resolvers } from '../gen/index.js'
 
-export const TargetResolver = {
+export const TargetResolver: Resolvers = {
   Query: {
     target: (_parent, args, _context, _info) => {
       return prisma.target.findFirst({
@@ -28,8 +29,8 @@ export const TargetResolver = {
         delete Object.assign(args, { coord2: args.dec })["dec"]
       }
       return prisma.target.create({
-        data: args,
-      })
+        data: args as typeof args & { coord1: number; coord2: number },
+      });
     },
 
     updateTarget: async (_parent, args, _context, _info) => {
@@ -44,9 +45,10 @@ export const TargetResolver = {
         where: {},
       })
       let results = []
-      for (let i = 0; i < args.targets.length; i++) {
-        let r = await prisma.target.create({ data: args.targets[i] })
-        results.push(r)
+      for (let target of args.targets ?? []) {
+        // @ts-expect-error coord1 and coord2 are not in the type
+        let r = await prisma.target.create({ data: target });
+        results.push(r);
       }
       return results
     },
@@ -58,8 +60,9 @@ export const TargetResolver = {
         },
       })
       let results = []
-      for (let i = 0; i < args.targets.length; i++) {
-        let r = await prisma.target.create({ data: args.targets[i] })
+      for (let target of args.targets ?? []) {
+        // @ts-expect-error coord1 and coord2 are not in the type
+        let r = await prisma.target.create({ data: target })
         results.push(r)
       }
       return results

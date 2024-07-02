@@ -5,9 +5,9 @@ export const RotatorTypeDefs = `#graphql
   }
 
   type Rotator {
-    pk: Int                         # Record primary key
-    angle: Float                    # Rotator angle
-    tracking: TrackingType          # Tracking mode
+    pk: Int!                         # Record primary key
+    angle: Float!                    # Rotator angle
+    tracking: TrackingType!          # Tracking mode
   }
 
   type Query {
@@ -19,6 +19,6 @@ export const RotatorTypeDefs = `#graphql
       pk: Int!                # Primary key
       angle: Float            # Rotator angle
       tracking: TrackingType  # Tracking mode
-    ): Rotator
+    ): Rotator!
   }
 `

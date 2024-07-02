@@ -1,5 +1,4 @@
 export const InstrumentTypeDefs = `#graphql
-  scalar JSON
 
   enum WfsType {
     NONE
@@ -9,16 +8,24 @@ export const InstrumentTypeDefs = `#graphql
   }
 
   type Instrument {
-    pk: Int                         # Record primary key
-    name: String                    # Instrument name
-    iaa: Float                      # Instrument Alignment Angle
-    issPort: Int                    # Instrument Support Structure port
-    focusOffset: Float              # Focus offset
-    wfs: WfsType                    # Asociated Wavefront Sensor
-    originX: Float                  # Origin of instrument X position
-    originY: Float                  # Origin of instrument Y position
-    ao: Boolean                     # Adaptive Optics is being used?
-    extraParams: JSON               # Instrument dependent set of parameters
+    pk: Int!                         # Record primary key
+    name: String!                    # Instrument name
+    iaa: Float!                      # Instrument Alignment Angle
+    issPort: Int!                    # Instrument Support Structure port
+    focusOffset: Float!              # Focus offset
+    wfs: WfsType!                    # Asociated Wavefront Sensor
+    originX: Float!                  # Origin of instrument X position
+    originY: Float!                  # Origin of instrument Y position
+    ao: Boolean!                     # Adaptive Optics is being used?
+    extraParams: JSON!               # Instrument dependent set of parameters
+  }
+
+  type DistinctInstrument {
+    name: String!
+  }
+
+  type DistinctPort {
+    issPort: Int!
   }
 
   # The "Query" type is special: it lists all of the available queries that
@@ -37,11 +44,11 @@ export const InstrumentTypeDefs = `#graphql
       issPort: Int
       wfs: WfsType
       extraParams: JSON
-    ): [Instrument]
+    ): [Instrument!]!
 
-    distinctInstruments: [Instrument]
+    distinctInstruments: [DistinctInstrument!]!
     
-    distinctPorts(name: String): [Instrument]
+    distinctPorts(name: String): [DistinctPort!]!
   }
 
   type Mutation {
@@ -55,6 +62,6 @@ export const InstrumentTypeDefs = `#graphql
       originY: Float      # Origin of instrument Y position
       ao: Boolean         # Adaptive Optics is being used?
       extraParams: JSON   # Instrument dependent set of parameters
-    ): Instrument
+    ): Instrument!
   }
-`
+`;

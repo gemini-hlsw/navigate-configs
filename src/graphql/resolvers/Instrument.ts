@@ -1,6 +1,7 @@
 import { prisma } from "../../prisma/db.js"
+import { Resolvers } from '../gen/index.js'
 
-export const InstrumentResolver = {
+export const InstrumentResolver: Resolvers = {
   Query: {
     instrument: (_parent, args, _context, _info) => {
       return prisma.instrument.findFirst({ where: args })
@@ -24,7 +25,7 @@ export const InstrumentResolver = {
   },
   Mutation: {
     createInstrument: (_parent, args, _context, _info) => {
-      return prisma.instrument.create({ data: args })
+      return prisma.instrument.create({ data: { extraParams: {}, ...args} })
     },
   },
 }

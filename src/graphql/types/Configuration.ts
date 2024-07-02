@@ -9,15 +9,15 @@ export const ConfigurationTypeDefs = `#graphql
   }
 
   type Configuration {
-    pk: Int
-    site: SiteType
+    pk: Int!
+    site: SiteType!
     selectedTarget: Int
     selectedOiTarget: Int
     selectedP1Target: Int
     selectedP2Target: Int
-    oiGuidingType: GuidingType
-    p1GuidingType: GuidingType
-    p2GuidingType: GuidingType
+    oiGuidingType: GuidingType!
+    p1GuidingType: GuidingType!
+    p2GuidingType: GuidingType!
     obsTitle: String
     obsId: String
     obsInstrument: String
@@ -38,14 +38,14 @@ export const ConfigurationTypeDefs = `#graphql
       selectedOiTarget: Int
       selectedP1Target: Int
       selectedP2Target: Int
-      oiGuidingType: GuidingType
-      p1GuidingType: GuidingType
-      p2GuidingType: GuidingType
+      oiGuidingType: GuidingType!
+      p1GuidingType: GuidingType!
+      p2GuidingType: GuidingType!
       obsTitle: String
       obsId: String
       obsInstrument: String
       obsSubtitle: String
-    ): Configuration
+    ): Configuration!
 
     updateConfiguration(
       pk: Int!
@@ -61,6 +61,6 @@ export const ConfigurationTypeDefs = `#graphql
       obsId: String
       obsInstrument: String
       obsSubtitle: String
-    ): Configuration
+    ): Configuration!
   }
-`
+`;
