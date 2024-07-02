@@ -38,7 +38,7 @@ The database should be named `configs` and using prisma its schema can be create
 
 ```bash
 pnpm prisma generate
-pnpm populate
+pnpm prisma migrate dev
 ```
 
 #### ERD

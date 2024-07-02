@@ -1,32 +1,42 @@
-FROM node:22-alpine AS runner
-ENV NODE_ENV=production
+# Base image with Node.js and pnpm and a custom user
+FROM node:22-alpine AS base
 
 # Create app directory
 WORKDIR /usr/src/app
-RUN apk update \
-  && apk add openssl \
-  && rm -rf /var/lib/apt/lists/* \
-  && rm -rf /var/cache/apt/*
+RUN  apk add --no-cache openssl
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
+# Installs pnpm
+RUN pnpm --version
 
 # Create software user
 RUN addgroup -S software -g 3624 && adduser -S software -u 3624 -G software
 RUN chown -R software:software /usr/src/app
 USER software
 
-# Copy dependency definitions
-COPY --chown=software:software package.json .
-
-# Install dependencies
-RUN npm install
-
-# Copy all the remaining code
 COPY --chown=software:software . .
 
-# Build
-RUN npm run build
+# Separate layer for dependencies, caching the npm cache
+FROM base AS prod-deps
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 
-# Generate prisma definitions
-RUN npx prisma generate
+# Separate layer for building, caching the npm cache
+FROM base AS build
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN pnpm build
+
+# Final image
+FROM base
+ENV NODE_ENV=production
+
+# Copy built files
+COPY --from=prod-deps --chown=software:software /usr/src/app/node_modules /usr/src/app/node_modules
+COPY --from=build --chown=software:software /usr/src/app/dist /usr/src/app/dist
+
+EXPOSE 4000
 
 # Start command
 CMD ["./start-server.sh"]
