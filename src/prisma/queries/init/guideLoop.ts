@@ -1,20 +1,6 @@
-interface GuideLoopType {
-  pk?: number
-  m2TipTiltEnable: boolean
-  m2TipTiltSource: string
-  m2FocusEnable: boolean
-  m2FocusSource: string
-  m2TipTiltFocusLink: boolean
-  m2ComaEnable: boolean
-  m1CorrectionsEnable: boolean
-  m2ComaM1CorrectionsSource: string
-  mountOffload: boolean
-  daytimeMode: boolean
-  probeTracking: string
-  lightPath: string
-}
+import { Prisma } from '@prisma/client'
 
-export const INITIAL_GUIDE_LOOP: GuideLoopType = {
+export const INITIAL_GUIDE_LOOP: Prisma.GuideLoopCreateInput = {
   m2TipTiltEnable: true,
   m2TipTiltSource: "PWFS1",
   m2FocusEnable: true,
@@ -29,19 +15,7 @@ export const INITIAL_GUIDE_LOOP: GuideLoopType = {
   lightPath: "Sky ➡ AO ➡ AC",
 }
 
-interface AltairGuideLoopType {
-  pk?: number
-  aoEnabled: boolean
-  oiBlend: boolean
-  focus: boolean
-  p1Ttf: boolean
-  strap: boolean
-  oiTtf: boolean
-  ttgs: boolean
-  sfo: boolean
-}
-
-export const INITIAL_ALTAIR_GUIDE_LOOP: AltairGuideLoopType = {
+export const INITIAL_ALTAIR_GUIDE_LOOP: Prisma.AltairGuideLoopCreateInput = {
   aoEnabled: true,
   oiBlend: true,
   focus: true,
@@ -52,17 +26,7 @@ export const INITIAL_ALTAIR_GUIDE_LOOP: AltairGuideLoopType = {
   sfo: true,
 }
 
-interface GemsGuideLoopType {
-  pk?: number
-  aoEnabled: boolean
-  focus: boolean
-  rotation: boolean
-  tipTilt: boolean
-  anisopl: boolean
-  flexure: boolean
-}
-
-export const INITIAL_GEMS_GUIDE_LOOP: GemsGuideLoopType = {
+export const INITIAL_GEMS_GUIDE_LOOP: Prisma.GemsGuideLoopCreateInput = {
   aoEnabled: true,
   focus: true,
   rotation: true,

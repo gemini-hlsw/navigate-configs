@@ -1,24 +1,6 @@
-interface SlewFlagsInput {
-  pk?: number
-  zeroChopThrow: boolean
-  zeroSourceOffset: boolean
-  zeroSourceDiffTrack: boolean
-  zeroMountOffset: boolean
-  zeroMountDiffTrack: boolean
-  shortcircuitTargetFilter: boolean
-  shortcircuitMountFilter: boolean
-  resetPointing: boolean
-  stopGuide: boolean
-  zeroGuideOffset: boolean
-  zeroInstrumentOffset: boolean
-  autoparkPwfs1: boolean
-  autoparkPwfs2: boolean
-  autoparkOiwfs: boolean
-  autoparkGems: boolean
-  autoparkAowfs: boolean
-}
+import { Prisma } from '@prisma/client'
 
-export const INITIAL_SLEW_FLAGS: SlewFlagsInput = {
+export const INITIAL_SLEW_FLAGS: Prisma.SlewFlagsCreateInput = {
   zeroChopThrow: true,
   zeroSourceOffset: true,
   zeroSourceDiffTrack: true,

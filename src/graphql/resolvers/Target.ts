@@ -1,3 +1,4 @@
+import type { Target } from '@prisma/client'
 import { prisma } from "../../prisma/db.js"
 import { Resolvers } from '../gen/index.js'
 
@@ -44,13 +45,9 @@ export const TargetResolver: Resolvers = {
       await prisma.target.deleteMany({
         where: {},
       })
-      let results = []
-      for (let target of args.targets ?? []) {
-        // @ts-expect-error coord1 and coord2 are not in the type
-        let r = await prisma.target.create({ data: target });
-        results.push(r);
-      }
-      return results
+      return prisma.target.createManyAndReturn({
+        data: (args.targets ?? []) as Target[],
+      });
     },
 
     removeAndCreateWfsTargets: async (_parent, args, _context, _info) => {
@@ -59,13 +56,9 @@ export const TargetResolver: Resolvers = {
           type: args.wfs,
         },
       })
-      let results = []
-      for (let target of args.targets ?? []) {
-        // @ts-expect-error coord1 and coord2 are not in the type
-        let r = await prisma.target.create({ data: target })
-        results.push(r)
-      }
-      return results
+      return prisma.target.createManyAndReturn({
+        data: (args.targets ?? []) as Target[],
+      });
     },
   },
 }

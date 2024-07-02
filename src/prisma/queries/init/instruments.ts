@@ -1,19 +1,6 @@
-import { WfsType } from "@prisma/client"
+import { Prisma } from "@prisma/client"
 
-interface InstrumentInput {
-  pk?: number
-  wfs: WfsType
-  iaa: number
-  issPort: number
-  focusOffset: number
-  name: string
-  ao: boolean
-  originX: number
-  originY: number
-  extraParams: object
-}
-
-export const INITIAL_INSTRUMENTS: InstrumentInput[] = [
+export const INITIAL_INSTRUMENTS: Prisma.InstrumentCreateInput[] = [
   {
     wfs: "NONE",
     iaa: 0,
@@ -258,34 +245,13 @@ export const INITIAL_INSTRUMENTS: InstrumentInput[] = [
   },
 ]
 
-interface GemsInstrumentType {
-  pk?: number
-  beamsplitter: string
-  adc: boolean
-  astrometricMode: string
-}
-
-export const INITIAL_GEMS_INSTRUMENT: GemsInstrumentType = {
+export const INITIAL_GEMS_INSTRUMENT: Prisma.GemsInstrumentCreateInput = {
   beamsplitter: "400 nm",
   adc: true,
   astrometricMode: "Best",
 }
 
-interface AltairInstrumentType {
-  pk?: number
-  beamsplitter: string
-  startMagnitude: number
-  seeing: number
-  windSpeed: number
-  forceMode: boolean
-  ndFilter: boolean
-  fieldLens: boolean
-  deployAdc: boolean
-  adjustAdc: boolean
-  lgs: boolean
-}
-
-export const INITIAL_ALTAIR_INSTRUMENT: AltairInstrumentType = {
+export const INITIAL_ALTAIR_INSTRUMENT: Prisma.AltairInstrumentCreateInput = {
   beamsplitter: "400 nm",
   startMagnitude: 10.0,
   seeing: 0.8,
