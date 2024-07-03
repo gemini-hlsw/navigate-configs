@@ -21,4 +21,4 @@ export const RotatorTypeDefs = `#graphql
       tracking: TrackingType  # Tracking mode
     ): Rotator!
   }
-`
+`;

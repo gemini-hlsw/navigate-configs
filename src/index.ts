@@ -1,4 +1,4 @@
-import { ApolloServer } from '@apollo/server';
+import { ApolloServer, BaseContext } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import { populateDb } from './prisma/queries/main.js';
 
@@ -55,7 +55,7 @@ const resolvers = {
 };
 
 // Create and start ApolloServer
-const server = new ApolloServer({
+const server = new ApolloServer<BaseContext>({
   typeDefs: typeDefs,
   resolvers,
 });

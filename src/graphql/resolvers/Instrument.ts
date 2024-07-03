@@ -1,31 +1,31 @@
-import { prisma } from "../../prisma/db.js"
-import { Resolvers } from '../gen/index.js'
+import { prisma } from '../../prisma/db.js';
+import { Resolvers } from '../gen/index.js';
 
 export const InstrumentResolver: Resolvers = {
   Query: {
-    instrument: (_parent, args, _context, _info) => {
-      return prisma.instrument.findFirst({ where: args })
+    instrument: (_parent, args) => {
+      return prisma.instrument.findFirst({ where: args });
     },
-    instruments: (_parent, args, _context, _info) => {
-      return prisma.instrument.findMany({ where: args })
+    instruments: (_parent, args) => {
+      return prisma.instrument.findMany({ where: args });
     },
-    distinctInstruments: (_parent, args, _context, _info) => {
+    distinctInstruments: () => {
       return prisma.instrument.findMany({
-        distinct: ["name"],
+        distinct: ['name'],
         select: { name: true },
-      })
+      });
     },
-    distinctPorts: (_parent, args, _context, _info) => {
+    distinctPorts: (_parent, args) => {
       return prisma.instrument.findMany({
         where: args,
-        distinct: ["issPort"],
+        distinct: ['issPort'],
         select: { issPort: true },
-      })
+      });
     },
   },
   Mutation: {
-    createInstrument: (_parent, args, _context, _info) => {
-      return prisma.instrument.create({ data: { extraParams: {}, ...args} })
+    createInstrument: (_parent, args) => {
+      return prisma.instrument.create({ data: { extraParams: {}, ...args } });
     },
   },
-}
+};

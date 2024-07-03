@@ -14,7 +14,11 @@
     "populate": "prisma migrate deploy && prisma db seed",
     "dev": "node --watch --enable-source-maps ./dist/index.js",
     "codegen": "graphql-codegen --config tasks/codegen.ts",
-    "codegen:watch": "pnpm codegen --watch 'src/graphql/types/*.ts'"
+    "codegen:watch": "pnpm codegen --watch 'src/graphql/types/*.ts'",
+    "lint": "pnpm lint:prettier && pnpm lint:eslint",
+    "lint:prettier": "prettier --check .",
+    "lint:eslint": "eslint .",
+    "prepare": "husky"
   },
   "dependencies": {
     "@apollo/server": "^4.10.4",
@@ -24,14 +28,24 @@
     "prisma": "^5.16.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.6.0",
     "@graphql-codegen/cli": "^5.0.2",
     "@graphql-codegen/typescript": "^4.0.9",
     "@graphql-codegen/typescript-resolvers": "^4.2.1",
     "@parcel/watcher": "^2.4.1",
+    "@types/eslint__js": "^8.42.3",
     "@types/node": "^20.14.9",
-    "typescript": "^5.5.3"
+    "eslint": "^9.6.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^7.15.0"
   },
   "prisma": {
     "seed": "pnpm preview populate"
+  },
+  "lint-staged": {
+    "*.{js,mjs,ts,tsx,jsx,css,md,json,yml}": "prettier --write"
   }
 }

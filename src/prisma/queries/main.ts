@@ -1,7 +1,6 @@
-import { write } from "./write.js"
-import { read } from "./read.js"
+import { write } from './write.js';
 
 export async function populateDb() {
-  await write()
+  await write();
   // await getInfo()
 }

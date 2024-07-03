@@ -18,4 +18,4 @@ export const GemsInstrumentTypeDefs = `#graphql
       astrometricMode: String
     ): GemsInstrument!
   }
-`
+`;
