@@ -1,6 +1,7 @@
 import { prisma } from "../../prisma/db.js"
+import { Resolvers } from '../gen/index.js'
 
-export const GuideLoopResolver = {
+export const GuideLoopResolver: Resolvers = {
   Query: {
     guideLoop: (_parent, args, _context, _info) => {
       return prisma.guideLoop.findFirst({ where: args })

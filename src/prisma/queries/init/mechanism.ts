@@ -1,48 +1,6 @@
-import { TrackingType } from "@prisma/client"
+import { Prisma } from "@prisma/client"
 
-type StatusType = "PENDING" | "ACTIVE" | "DONE" | "ERROR"
-
-interface MechanismInput {
-  pk?: number
-  mcs: StatusType
-  mcsPark: StatusType
-  mcsUnwrap: StatusType
-  scs: StatusType
-  crcs: StatusType
-  crcsPark: StatusType
-  crcsUnwrap: StatusType
-  pwfs1: StatusType
-  pwfs1Park: StatusType
-  pwfs1Unwrap: StatusType
-  pwfs2: StatusType
-  pwfs2Park: StatusType
-  pwfs2Unwrap: StatusType
-  oiwfs: StatusType
-  oiwfsPark: StatusType
-  odgw: StatusType
-  odgwPark: StatusType
-  aowfs: StatusType
-  aowfsPark: StatusType
-  dome: StatusType
-  domePark: StatusType
-  domeMode: string
-  shutters: StatusType
-  shuttersPark: StatusType
-  shutterMode: string
-  shutterAperture: number
-  wVGate: StatusType
-  wVGateClose: StatusType
-  wVGateValue: number
-  eVGate: StatusType
-  eVGateClose: StatusType
-  eVGateValue: number
-  agScienceFoldPark: StatusType
-  agAoFoldPark: StatusType
-  agAcPickoffPark: StatusType
-  agParkAll: StatusType
-}
-
-export const INITIAL_MECHANISM: MechanismInput = {
+export const INITIAL_MECHANISM: Prisma.MechanismCreateInput = {
   mcs: "PENDING",
   mcsPark: "PENDING",
   mcsUnwrap: "PENDING",

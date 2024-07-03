@@ -1,12 +1,12 @@
 export const GemsGuideLoopTypeDefs = `#graphql
   type GemsGuideLoop {
-    pk: Int
-    aoEnabled: Boolean
-    focus: Boolean
-    rotation: Boolean
-    tipTilt: Boolean
-    anisopl: Boolean
-    flexure: Boolean
+    pk: Int!
+    aoEnabled: Boolean!
+    focus: Boolean!
+    rotation: Boolean!
+    tipTilt: Boolean!
+    anisopl: Boolean!
+    flexure: Boolean!
   }
 
   type Query {
@@ -22,6 +22,6 @@ export const GemsGuideLoopTypeDefs = `#graphql
       tipTilt: Boolean
       anisopl: Boolean
       flexure: Boolean
-    ): GemsGuideLoop
+    ): GemsGuideLoop!
   }
 `

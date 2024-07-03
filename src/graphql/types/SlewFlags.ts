@@ -1,22 +1,22 @@
 export const SlewFlagsTypeDefs = `#graphql
   type SlewFlags {
-    pk: Int                             # Record primary key
-    zeroChopThrow: Boolean              # 
-    zeroSourceOffset: Boolean           # 
-    zeroSourceDiffTrack: Boolean        # 
-    zeroMountOffset: Boolean            # 
-    zeroMountDiffTrack: Boolean         # 
-    shortcircuitTargetFilter: Boolean   # 
-    shortcircuitMountFilter: Boolean    # 
-    resetPointing: Boolean              # 
-    stopGuide: Boolean                  # 
-    zeroGuideOffset: Boolean            # 
-    zeroInstrumentOffset: Boolean       # 
-    autoparkPwfs1: Boolean              # 
-    autoparkPwfs2: Boolean              # 
-    autoparkOiwfs: Boolean              # 
-    autoparkGems: Boolean               # 
-    autoparkAowfs: Boolean              # 
+    pk: Int!                             # Record primary key
+    zeroChopThrow: Boolean!              # 
+    zeroSourceOffset: Boolean!           # 
+    zeroSourceDiffTrack: Boolean!        # 
+    zeroMountOffset: Boolean!            # 
+    zeroMountDiffTrack: Boolean!         # 
+    shortcircuitTargetFilter: Boolean!   # 
+    shortcircuitMountFilter: Boolean!    # 
+    resetPointing: Boolean!              # 
+    stopGuide: Boolean!                  # 
+    zeroGuideOffset: Boolean!            # 
+    zeroInstrumentOffset: Boolean!       # 
+    autoparkPwfs1: Boolean!              # 
+    autoparkPwfs2: Boolean!              # 
+    autoparkOiwfs: Boolean!              # 
+    autoparkGems: Boolean!               # 
+    autoparkAowfs: Boolean!              # 
   }
 
   type Query {
@@ -42,6 +42,6 @@ export const SlewFlagsTypeDefs = `#graphql
       autoparkOiwfs: Boolean              # 
       autoparkGems: Boolean               # 
       autoparkAowfs: Boolean              # 
-    ): SlewFlags
+    ): SlewFlags!
   }
-`
+`;

@@ -1,9 +1,9 @@
 export const GemsInstrumentTypeDefs = `#graphql
   type GemsInstrument {
-    pk: Int
-    beamsplitter: String
-    adc: Boolean
-    astrometricMode: String
+    pk: Int!
+    beamsplitter: String!
+    adc: Boolean!
+    astrometricMode: String!
   }
 
   type Query {
@@ -16,6 +16,6 @@ export const GemsInstrumentTypeDefs = `#graphql
       beamsplitter: String
       adc: Boolean
       astrometricMode: String
-    ): GemsInstrument
+    ): GemsInstrument!
   }
 `

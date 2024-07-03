@@ -1,7 +1,7 @@
 export const UserTypeDefs = `#graphql
   type User {
-    pk: Int
-    name: String
+    pk: Int!
+    name: String!
   }
 
   # The "Query" type is special: it lists all of the available queries that
@@ -9,12 +9,12 @@ export const UserTypeDefs = `#graphql
   # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
     user(pk: Int!): User
-    users: [User]
+    users: [User!]!
   }
 
   type Mutation {
     createUser(
       name: String!
-    ): User
+    ): User!
   }
-`
+`;

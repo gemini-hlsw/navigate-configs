@@ -1,6 +1,8 @@
+import type { Target } from '@prisma/client'
 import { prisma } from "../../prisma/db.js"
+import { Resolvers } from '../gen/index.js'
 
-export const TargetResolver = {
+export const TargetResolver: Resolvers = {
   Query: {
     target: (_parent, args, _context, _info) => {
       return prisma.target.findFirst({
@@ -28,8 +30,8 @@ export const TargetResolver = {
         delete Object.assign(args, { coord2: args.dec })["dec"]
       }
       return prisma.target.create({
-        data: args,
-      })
+        data: args as typeof args & { coord1: number; coord2: number },
+      });
     },
 
     updateTarget: async (_parent, args, _context, _info) => {
@@ -43,12 +45,9 @@ export const TargetResolver = {
       await prisma.target.deleteMany({
         where: {},
       })
-      let results = []
-      for (let i = 0; i < args.targets.length; i++) {
-        let r = await prisma.target.create({ data: args.targets[i] })
-        results.push(r)
-      }
-      return results
+      return prisma.target.createManyAndReturn({
+        data: (args.targets ?? []) as Target[],
+      });
     },
 
     removeAndCreateWfsTargets: async (_parent, args, _context, _info) => {
@@ -57,12 +56,9 @@ export const TargetResolver = {
           type: args.wfs,
         },
       })
-      let results = []
-      for (let i = 0; i < args.targets.length; i++) {
-        let r = await prisma.target.create({ data: args.targets[i] })
-        results.push(r)
-      }
-      return results
+      return prisma.target.createManyAndReturn({
+        data: (args.targets ?? []) as Target[],
+      });
     },
   },
 }

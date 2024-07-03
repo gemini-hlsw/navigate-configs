@@ -1,6 +1,7 @@
 import { prisma } from "../../prisma/db.js"
+import { Resolvers } from '../gen/index.js'
 
-export const MechanismResolver = {
+export const MechanismResolver: Resolvers = {
   Query: {
     mechanism: (_parent, args, _context, _info) => {
       return prisma.mechanism.findFirst({ where: args })

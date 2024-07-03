@@ -1,6 +1,7 @@
 import { prisma } from "../../prisma/db.js"
+import { Resolvers } from '../gen/index.js'
 
-export const UserResolver = {
+export const UserResolver: Resolvers = {
   Query: {
     user: (_parent, args, _context, _info) => {
       return prisma.user.findFirst({

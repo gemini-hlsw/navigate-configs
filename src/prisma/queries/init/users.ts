@@ -1,9 +1,6 @@
-interface UserInput {
-  pk?: number
-  name: string
-}
+import { Prisma } from '@prisma/client'
 
-export const INITIAL_USERS: UserInput[] = [
+export const INITIAL_USERS: Prisma.UserCreateInput[] = [
   {
     name: "Reader",
   },
