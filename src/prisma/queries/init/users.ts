@@ -1,7 +1,7 @@
-import { Prisma } from '@prisma/client'
+import { Prisma } from '@prisma/client';
 
 export const INITIAL_USERS: Prisma.UserCreateInput[] = [
   {
-    name: "Reader",
+    name: 'Reader',
   },
-]
+];

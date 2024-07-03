@@ -1,19 +1,19 @@
-import { Prisma } from '@prisma/client'
+import { Prisma } from '@prisma/client';
 
 export const INITIAL_GUIDE_LOOP: Prisma.GuideLoopCreateInput = {
   m2TipTiltEnable: true,
-  m2TipTiltSource: "PWFS1",
+  m2TipTiltSource: 'PWFS1',
   m2FocusEnable: true,
-  m2FocusSource: "PWFS2",
+  m2FocusSource: 'PWFS2',
   m2TipTiltFocusLink: true,
   m2ComaEnable: true,
   m1CorrectionsEnable: true,
-  m2ComaM1CorrectionsSource: "OIWFS",
+  m2ComaM1CorrectionsSource: 'OIWFS',
   mountOffload: true,
   daytimeMode: true,
-  probeTracking: "PWFS1",
-  lightPath: "Sky ➡ AO ➡ AC",
-}
+  probeTracking: 'PWFS1',
+  lightPath: 'Sky ➡ AO ➡ AC',
+};
 
 export const INITIAL_ALTAIR_GUIDE_LOOP: Prisma.AltairGuideLoopCreateInput = {
   aoEnabled: true,
@@ -24,7 +24,7 @@ export const INITIAL_ALTAIR_GUIDE_LOOP: Prisma.AltairGuideLoopCreateInput = {
   oiTtf: true,
   ttgs: true,
   sfo: true,
-}
+};
 
 export const INITIAL_GEMS_GUIDE_LOOP: Prisma.GemsGuideLoopCreateInput = {
   aoEnabled: true,
@@ -33,4 +33,4 @@ export const INITIAL_GEMS_GUIDE_LOOP: Prisma.GemsGuideLoopCreateInput = {
   tipTilt: true,
   anisopl: true,
   flexure: true,
-}
+};

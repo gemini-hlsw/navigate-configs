@@ -24,4 +24,4 @@ export const GemsGuideLoopTypeDefs = `#graphql
       flexure: Boolean
     ): GemsGuideLoop!
   }
-`
+`;

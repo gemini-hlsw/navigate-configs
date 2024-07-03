@@ -3,20 +3,20 @@ import { Resolvers } from '../gen/index.js';
 
 export const ConfigurationResolver: Resolvers = {
   Query: {
-    configuration: (_parent, args, _context, _info) => {
-      return prisma.configuration.findFirst({ where: args })
+    configuration: (_parent, args) => {
+      return prisma.configuration.findFirst({ where: args });
     },
   },
   Mutation: {
-    createConfiguration: (_parent, args, _context, _info) => {
-      return prisma.configuration.create({ data: args })
+    createConfiguration: (_parent, args) => {
+      return prisma.configuration.create({ data: args });
     },
 
-    updateConfiguration: (_parent, args, _context, _info) => {
+    updateConfiguration: (_parent, args) => {
       return prisma.configuration.update({
         where: { pk: args.pk },
         data: args,
-      })
+      });
     },
   },
-}
+};
