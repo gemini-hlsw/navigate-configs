@@ -18,7 +18,7 @@
     "lint": "pnpm lint:prettier && pnpm lint:eslint",
     "lint:prettier": "prettier --check .",
     "lint:eslint": "eslint .",
-    "prepare": "husky"
+    "prepare": "node .husky/install.js"
   },
   "dependencies": {
     "@apollo/server": "^4.10.4",

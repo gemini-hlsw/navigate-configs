@@ -21,6 +21,7 @@ COPY --chown=software:software . .
 
 # Separate layer for dependencies, caching the npm cache
 FROM base AS prod-deps
+ENV NODE_ENV=production
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 
 # Separate layer for building, caching the npm cache
