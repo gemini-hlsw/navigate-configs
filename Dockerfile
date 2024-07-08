@@ -12,6 +12,9 @@ RUN corepack enable
 # Installs pnpm
 RUN pnpm --version
 
+# Create volume for DB initialization
+RUN mkdir /usr/src/app/dbinit
+
 # Create software user
 RUN addgroup -S software -g 3624 && adduser -S software -u 3624 -G software
 RUN chown -R software:software /usr/src/app
