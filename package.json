@@ -6,6 +6,7 @@
   "type": "module",
   "packageManager": "pnpm@9.4.0",
   "scripts": {
+    "test": "mocha --node-option enable-source-maps --forbid-only --forbid-pending dist/**/*.spec.js",
     "generate": "prisma generate",
     "prebuild": "pnpm generate",
     "build": "tsc",
@@ -33,11 +34,15 @@
     "@graphql-codegen/typescript": "^4.0.9",
     "@graphql-codegen/typescript-resolvers": "^4.2.1",
     "@parcel/watcher": "^2.4.1",
+    "@types/chai": "^4.3.16",
     "@types/eslint__js": "^8.42.3",
+    "@types/mocha": "^10.0.7",
     "@types/node": "^20.14.9",
+    "chai": "^5.1.1",
     "eslint": "^9.6.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
+    "mocha": "^10.6.0",
     "prettier": "^3.3.2",
     "typescript": "^5.5.3",
     "typescript-eslint": "^7.15.0"
