@@ -12,8 +12,8 @@ importers:
         specifier: ^4.10.4
         version: 4.10.4(graphql@16.9.0)
       '@prisma/client':
-        specifier: ^5.16.1
-        version: 5.16.1(prisma@5.16.2)
+        specifier: ^5.16.2
+        version: 5.16.2(prisma@5.16.2)
       graphql:
         specifier: ^16.9.0
         version: 16.9.0
@@ -846,8 +846,8 @@ packages:
     resolution: {integrity: sha512-BRs5XUAwiyCDQMsVA9IDvDa7UBR9gAvPHgugOeGng3YN6vJ9JYonyDc0lNczErgtCWtucjR5N7VtaonboD/ezg==}
     engines: {node: '>=10.12.0'}
 
-  '@prisma/client@5.16.1':
-    resolution: {integrity: sha512-wM9SKQjF0qLxdnOZIVAIMKiz6Hu7vDt4FFAih85K1dk/Rr2mdahy6d3QP41K62N9O0DJJA//gUDA3Mp49xsKIg==}
+  '@prisma/client@5.16.2':
+    resolution: {integrity: sha512-+1lmkhR9gHWcTC5oghm2ZKpWljyWdzfazCVlLKUWXVmwHSf52g81aZ8qb6Km5Bs025yBi7puLp3qSLEvktoUtw==}
     engines: {node: '>=16.13'}
     peerDependencies:
       prisma: '*'
@@ -3954,7 +3954,7 @@ snapshots:
       tslib: 2.6.3
       webcrypto-core: 1.8.0
 
-  '@prisma/client@5.16.1(prisma@5.16.2)':
+  '@prisma/client@5.16.2(prisma@5.16.2)':
     optionalDependencies:
       prisma: 5.16.2
 
