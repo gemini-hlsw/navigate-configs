@@ -6,6 +6,7 @@ import { INITIAL_MECHANISM } from './init/mechanism.js';
 import { INITIAL_ROTATOR } from './init/rotator.js';
 import { INITIAL_SLEW_FLAGS } from './init/slewFlags.js';
 import { INITIAL_USERS } from './init/users.js';
+import { INITIAL_GUIDE_ALARMS } from './init/guideAlarm.js';
 
 async function createUsers() {
   console.log('Creating user reader');
@@ -72,6 +73,17 @@ async function createMechanism() {
   });
 }
 
+async function createGuideAlarms() {
+  console.log('Creating guide alarms');
+  for (const guideAlarm of INITIAL_GUIDE_ALARMS) {
+    await prisma.guideAlarm.upsert({
+      where: { wfs: guideAlarm.wfs },
+      update: guideAlarm,
+      create: guideAlarm,
+    });
+  }
+}
+
 export async function write() {
   await createUsers();
   await createInstruments();
@@ -80,4 +92,5 @@ export async function write() {
   await createConfiguration();
   await createGuideLoopInfo();
   await createMechanism();
+  await createGuideAlarms();
 }

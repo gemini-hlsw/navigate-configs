@@ -218,6 +218,12 @@ model GemsGuideLoop {
   flexure   Boolean
 }
 
+model GuideAlarm {
+  wfs     WfsType @id
+  limit   Int
+  enabled Boolean @default(true)
+}
+
 // model pwfs1 {
 //   pk Int @id @default(autoincrement())
 //   filter String

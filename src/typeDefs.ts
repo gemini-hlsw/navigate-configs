@@ -10,6 +10,7 @@ import { RotatorTypeDefs } from './graphql/types/Rotator.js';
 import { SlewFlagsTypeDefs } from './graphql/types/SlewFlags.js';
 import { TargetTypeDefs } from './graphql/types/Target.js';
 import { UserTypeDefs } from './graphql/types/User.js';
+import { GuideAlarmTypeDefs } from './graphql/types/GuideAlarm.js';
 import { DateTimeTypeDefinition, JSONDefinition } from 'graphql-scalars';
 
 export const typeDefs = [
@@ -27,4 +28,5 @@ export const typeDefs = [
   SlewFlagsTypeDefs,
   TargetTypeDefs,
   UserTypeDefs,
+  GuideAlarmTypeDefs,
 ];

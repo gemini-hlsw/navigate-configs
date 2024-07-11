@@ -110,6 +110,19 @@ export type GemsInstrument = {
   pk: Scalars['Int']['output'];
 };
 
+export type GuideAlarm = {
+  __typename?: 'GuideAlarm';
+  enabled: Scalars['Boolean']['output'];
+  limit: Scalars['Int']['output'];
+};
+
+export type GuideAlarms = {
+  __typename?: 'GuideAlarms';
+  OIWFS: GuideAlarm;
+  PWFS1: GuideAlarm;
+  PWFS2: GuideAlarm;
+};
+
 export type GuideLoop = {
   __typename?: 'GuideLoop';
   daytimeMode: Scalars['Boolean']['output'];
@@ -198,6 +211,7 @@ export type Mutation = {
   updateConfiguration: Configuration;
   updateGemsGuideLoop: GemsGuideLoop;
   updateGemsInstrument: GemsInstrument;
+  updateGuideAlarm: GuideAlarm;
   updateGuideLoop: GuideLoop;
   updateMechanism: Mechanism;
   updateRotator: Rotator;
@@ -327,6 +341,13 @@ export type MutationUpdateGemsInstrumentArgs = {
 };
 
 
+export type MutationUpdateGuideAlarmArgs = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  wfs: WfsType;
+};
+
+
 export type MutationUpdateGuideLoopArgs = {
   daytimeMode?: InputMaybe<Scalars['Boolean']['input']>;
   lightPath?: InputMaybe<Scalars['String']['input']>;
@@ -432,6 +453,7 @@ export type Query = {
   distinctPorts: Array<DistinctPort>;
   gemsGuideLoop?: Maybe<GemsGuideLoop>;
   gemsInstrument?: Maybe<GemsInstrument>;
+  guideAlarms: GuideAlarms;
   guideLoop?: Maybe<GuideLoop>;
   instrument?: Maybe<Instrument>;
   instruments: Array<Instrument>;
@@ -662,6 +684,8 @@ export type ResolversTypes = {
   Float: ResolverTypeWrapper<Scalars['Float']['output']>;
   GemsGuideLoop: ResolverTypeWrapper<GemsGuideLoop>;
   GemsInstrument: ResolverTypeWrapper<GemsInstrument>;
+  GuideAlarm: ResolverTypeWrapper<GuideAlarm>;
+  GuideAlarms: ResolverTypeWrapper<GuideAlarms>;
   GuideLoop: ResolverTypeWrapper<GuideLoop>;
   GuidingType: GuidingType;
   Instrument: ResolverTypeWrapper<Instrument>;
@@ -699,6 +723,8 @@ export type ResolversParentTypes = {
   Float: Scalars['Float']['output'];
   GemsGuideLoop: GemsGuideLoop;
   GemsInstrument: GemsInstrument;
+  GuideAlarm: GuideAlarm;
+  GuideAlarms: GuideAlarms;
   GuideLoop: GuideLoop;
   Instrument: Instrument;
   Int: Scalars['Int']['output'];
@@ -811,6 +837,19 @@ export type GemsInstrumentResolvers<ContextType = any, ParentType extends Resolv
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type GuideAlarmResolvers<ContextType = any, ParentType extends ResolversParentTypes['GuideAlarm'] = ResolversParentTypes['GuideAlarm']> = {
+  enabled?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  limit?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type GuideAlarmsResolvers<ContextType = any, ParentType extends ResolversParentTypes['GuideAlarms'] = ResolversParentTypes['GuideAlarms']> = {
+  OIWFS?: Resolver<ResolversTypes['GuideAlarm'], ParentType, ContextType>;
+  PWFS1?: Resolver<ResolversTypes['GuideAlarm'], ParentType, ContextType>;
+  PWFS2?: Resolver<ResolversTypes['GuideAlarm'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type GuideLoopResolvers<ContextType = any, ParentType extends ResolversParentTypes['GuideLoop'] = ResolversParentTypes['GuideLoop']> = {
   daytimeMode?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   lightPath?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -899,6 +938,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   updateConfiguration?: Resolver<ResolversTypes['Configuration'], ParentType, ContextType, RequireFields<MutationUpdateConfigurationArgs, 'pk'>>;
   updateGemsGuideLoop?: Resolver<ResolversTypes['GemsGuideLoop'], ParentType, ContextType, RequireFields<MutationUpdateGemsGuideLoopArgs, 'pk'>>;
   updateGemsInstrument?: Resolver<ResolversTypes['GemsInstrument'], ParentType, ContextType, RequireFields<MutationUpdateGemsInstrumentArgs, 'pk'>>;
+  updateGuideAlarm?: Resolver<ResolversTypes['GuideAlarm'], ParentType, ContextType, RequireFields<MutationUpdateGuideAlarmArgs, 'wfs'>>;
   updateGuideLoop?: Resolver<ResolversTypes['GuideLoop'], ParentType, ContextType, RequireFields<MutationUpdateGuideLoopArgs, 'pk'>>;
   updateMechanism?: Resolver<ResolversTypes['Mechanism'], ParentType, ContextType, RequireFields<MutationUpdateMechanismArgs, 'pk'>>;
   updateRotator?: Resolver<ResolversTypes['Rotator'], ParentType, ContextType, RequireFields<MutationUpdateRotatorArgs, 'pk'>>;
@@ -914,6 +954,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   distinctPorts?: Resolver<Array<ResolversTypes['DistinctPort']>, ParentType, ContextType, Partial<QueryDistinctPortsArgs>>;
   gemsGuideLoop?: Resolver<Maybe<ResolversTypes['GemsGuideLoop']>, ParentType, ContextType>;
   gemsInstrument?: Resolver<Maybe<ResolversTypes['GemsInstrument']>, ParentType, ContextType>;
+  guideAlarms?: Resolver<ResolversTypes['GuideAlarms'], ParentType, ContextType>;
   guideLoop?: Resolver<Maybe<ResolversTypes['GuideLoop']>, ParentType, ContextType>;
   instrument?: Resolver<Maybe<ResolversTypes['Instrument']>, ParentType, ContextType, Partial<QueryInstrumentArgs>>;
   instruments?: Resolver<Array<ResolversTypes['Instrument']>, ParentType, ContextType, Partial<QueryInstrumentsArgs>>;
@@ -992,6 +1033,8 @@ export type Resolvers<ContextType = any> = {
   El?: ElResolvers<ContextType>;
   GemsGuideLoop?: GemsGuideLoopResolvers<ContextType>;
   GemsInstrument?: GemsInstrumentResolvers<ContextType>;
+  GuideAlarm?: GuideAlarmResolvers<ContextType>;
+  GuideAlarms?: GuideAlarmsResolvers<ContextType>;
   GuideLoop?: GuideLoopResolvers<ContextType>;
   Instrument?: InstrumentResolvers<ContextType>;
   JSON?: GraphQLScalarType;
