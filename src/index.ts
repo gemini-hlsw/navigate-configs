@@ -19,6 +19,7 @@ import { UserResolver } from './graphql/resolvers/User.js';
 // TypeDefs
 import { DateTimeResolver, JSONResolver } from 'graphql-scalars';
 import { typeDefs } from './typeDefs.js';
+import { GuideAlarmResolver } from './graphql/resolvers/GuideAlarm.js';
 
 // Resolvers define how to fetch the types defined in your schema.
 const resolvers = {
@@ -37,6 +38,7 @@ const resolvers = {
     ...SlewFlagsResolver.Query,
     ...TargetResolver.Query,
     ...UserResolver.Query,
+    ...GuideAlarmResolver.Query,
   },
   Mutation: {
     ...AltairGuideLoopResolver.Mutation,
@@ -51,6 +53,7 @@ const resolvers = {
     ...SlewFlagsResolver.Mutation,
     ...TargetResolver.Mutation,
     ...UserResolver.Mutation,
+    ...GuideAlarmResolver.Mutation,
   },
 };
 

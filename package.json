@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "type": "module",
-  "packageManager": "pnpm@9.4.0",
+  "packageManager": "pnpm@9.5.0",
   "scripts": {
     "test": "mocha --node-option enable-source-maps --forbid-only --forbid-pending dist/**/*.spec.js",
     "generate": "prisma generate",
@@ -15,7 +15,7 @@
     "populate": "prisma migrate deploy && prisma db seed",
     "dev": "node --watch --enable-source-maps ./dist/index.js",
     "codegen": "graphql-codegen --config tasks/codegen.ts",
-    "codegen:watch": "pnpm codegen --watch 'src/graphql/types/*.ts'",
+    "codegen:watch": "pnpm codegen --watch 'src/graphql/*.ts'",
     "lint": "pnpm lint:prettier && pnpm lint:eslint",
     "lint:prettier": "prettier --check .",
     "lint:eslint": "eslint .",
