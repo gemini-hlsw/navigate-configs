@@ -1,14 +1,13 @@
-import { prisma } from '../../prisma/db.js';
 import { Resolvers } from '../gen/index.js';
 
 export const MechanismResolver: Resolvers = {
   Query: {
-    mechanism: (_parent, args) => {
+    mechanism: (_parent, args, { prisma }) => {
       return prisma.mechanism.findFirst({ where: args });
     },
   },
   Mutation: {
-    updateMechanism: (_parent, args) => {
+    updateMechanism: (_parent, args, { prisma }) => {
       return prisma.mechanism.update({
         where: { pk: args.pk },
         data: args,

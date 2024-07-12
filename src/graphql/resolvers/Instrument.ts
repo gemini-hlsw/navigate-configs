@@ -1,21 +1,20 @@
-import { prisma } from '../../prisma/db.js';
 import { Resolvers } from '../gen/index.js';
 
 export const InstrumentResolver: Resolvers = {
   Query: {
-    instrument: (_parent, args) => {
+    instrument: (_parent, args, { prisma }) => {
       return prisma.instrument.findFirst({ where: args });
     },
-    instruments: (_parent, args) => {
+    instruments: (_parent, args, { prisma }) => {
       return prisma.instrument.findMany({ where: args });
     },
-    distinctInstruments: () => {
+    distinctInstruments: (_parent, _args, { prisma }) => {
       return prisma.instrument.findMany({
         distinct: ['name'],
         select: { name: true },
       });
     },
-    distinctPorts: (_parent, args) => {
+    distinctPorts: (_parent, args, { prisma }) => {
       return prisma.instrument.findMany({
         where: args,
         distinct: ['issPort'],
@@ -24,7 +23,7 @@ export const InstrumentResolver: Resolvers = {
     },
   },
   Mutation: {
-    createInstrument: (_parent, args) => {
+    createInstrument: (_parent, args, { prisma }) => {
       return prisma.instrument.create({ data: { extraParams: {}, ...args } });
     },
   },

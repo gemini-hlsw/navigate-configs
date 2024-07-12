@@ -1,17 +1,16 @@
 import type { Target } from '@prisma/client';
-import { prisma } from '../../prisma/db.js';
 import { Resolvers } from '../gen/index.js';
 
 export const TargetResolver: Resolvers = {
   Query: {
-    target: (_parent, args) => {
+    target: (_parent, args, { prisma }) => {
       return prisma.target.findFirst({
         where: args,
         orderBy: { pk: 'desc' },
       });
     },
 
-    targets: (_parent, args) => {
+    targets: (_parent, args, { prisma }) => {
       return prisma.target.findMany({
         where: args,
         orderBy: { pk: 'desc' },
@@ -20,7 +19,7 @@ export const TargetResolver: Resolvers = {
   },
 
   Mutation: {
-    createTarget: async (_parent, args) => {
+    createTarget: async (_parent, args, { prisma }) => {
       if (args.type === 'FIXED') {
         // Some logics depending on the input
         delete Object.assign(args, { coord1: args.ra }).ra;
@@ -34,14 +33,14 @@ export const TargetResolver: Resolvers = {
       });
     },
 
-    updateTarget: async (_parent, args) => {
+    updateTarget: async (_parent, args, { prisma }) => {
       return prisma.target.update({
         where: { pk: args.pk },
         data: args,
       });
     },
 
-    removeAndCreateBaseTargets: async (_parent, args) => {
+    removeAndCreateBaseTargets: async (_parent, args, { prisma }) => {
       await prisma.target.deleteMany({
         where: {},
       });
@@ -50,7 +49,7 @@ export const TargetResolver: Resolvers = {
       });
     },
 
-    removeAndCreateWfsTargets: async (_parent, args) => {
+    removeAndCreateWfsTargets: async (_parent, args, { prisma }) => {
       await prisma.target.deleteMany({
         where: {
           type: args.wfs,

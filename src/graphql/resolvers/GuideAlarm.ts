@@ -1,11 +1,10 @@
 import { GuideAlarm } from '@prisma/client';
 import { FieldNode } from 'graphql';
-import { prisma } from '../../prisma/db.js';
 import { Resolvers, WfsType } from '../gen/index.js';
 
 export const GuideAlarmResolver: Resolvers = {
   Query: {
-    async guideAlarms(_parent, _args, _context, info) {
+    async guideAlarms(_parent, _args, { prisma }, info) {
       // Get the wfs types to query for from the graphql info object
       const wfsTypesToQuery =
         ((info.fieldNodes[0]?.selectionSet?.selections as FieldNode[])
@@ -25,7 +24,7 @@ export const GuideAlarmResolver: Resolvers = {
     },
   },
   Mutation: {
-    updateGuideAlarm(_parent, args) {
+    updateGuideAlarm(_parent, args, { prisma }) {
       return prisma.guideAlarm.update({
         where: { wfs: args.wfs },
         data: args,
