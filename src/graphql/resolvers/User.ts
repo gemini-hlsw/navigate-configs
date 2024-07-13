@@ -1,15 +1,14 @@
-import { prisma } from '../../prisma/db.js';
 import { Resolvers } from '../gen/index.js';
 
 export const UserResolver: Resolvers = {
   Query: {
-    user: (_parent, args) => {
+    user: (_parent, args, { prisma }) => {
       return prisma.user.findFirst({
         where: { pk: args.pk },
       });
     },
 
-    users: (_parent, args) => {
+    users: (_parent, args, { prisma }) => {
       return prisma.user.findMany({
         where: args,
         orderBy: { pk: 'desc' },
@@ -19,7 +18,7 @@ export const UserResolver: Resolvers = {
   },
 
   Mutation: {
-    createUser: (_parent, args) => {
+    createUser: (_parent, args, { prisma }) => {
       return prisma.user.create({ data: args });
     },
   },

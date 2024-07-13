@@ -8,6 +8,7 @@ const config: CodegenConfig = {
     'src/graphql/gen/index.ts': {
       plugins: ['typescript', 'typescript-resolvers'],
       config: {
+        contextType: '../../server.js#ApolloContext',
         enumsAsTypes: true,
         inputMaybeValue: 'T | undefined',
         scalars: {

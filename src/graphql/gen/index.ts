@@ -1,4 +1,5 @@
 import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
+import { ApolloContext } from '../../server.js';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = T | undefined;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -741,7 +742,7 @@ export type ResolversParentTypes = {
   User: User;
 };
 
-export type AltairGuideLoopResolvers<ContextType = any, ParentType extends ResolversParentTypes['AltairGuideLoop'] = ResolversParentTypes['AltairGuideLoop']> = {
+export type AltairGuideLoopResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['AltairGuideLoop'] = ResolversParentTypes['AltairGuideLoop']> = {
   aoEnabled?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   focus?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   oiBlend?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
@@ -754,7 +755,7 @@ export type AltairGuideLoopResolvers<ContextType = any, ParentType extends Resol
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type AltairInstrumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['AltairInstrument'] = ResolversParentTypes['AltairInstrument']> = {
+export type AltairInstrumentResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['AltairInstrument'] = ResolversParentTypes['AltairInstrument']> = {
   adjustAdc?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   beamsplitter?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   deployAdc?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
@@ -769,13 +770,13 @@ export type AltairInstrumentResolvers<ContextType = any, ParentType extends Reso
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type AzResolvers<ContextType = any, ParentType extends ResolversParentTypes['Az'] = ResolversParentTypes['Az']> = {
+export type AzResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Az'] = ResolversParentTypes['Az']> = {
   degrees?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   dms?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type ConfigurationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Configuration'] = ResolversParentTypes['Configuration']> = {
+export type ConfigurationResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Configuration'] = ResolversParentTypes['Configuration']> = {
   obsId?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   obsInstrument?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   obsSubtitle?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -796,29 +797,29 @@ export interface DateTimeScalarConfig extends GraphQLScalarTypeConfig<ResolversT
   name: 'DateTime';
 }
 
-export type DecResolvers<ContextType = any, ParentType extends ResolversParentTypes['Dec'] = ResolversParentTypes['Dec']> = {
+export type DecResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Dec'] = ResolversParentTypes['Dec']> = {
   degrees?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   dms?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type DistinctInstrumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['DistinctInstrument'] = ResolversParentTypes['DistinctInstrument']> = {
+export type DistinctInstrumentResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['DistinctInstrument'] = ResolversParentTypes['DistinctInstrument']> = {
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type DistinctPortResolvers<ContextType = any, ParentType extends ResolversParentTypes['DistinctPort'] = ResolversParentTypes['DistinctPort']> = {
+export type DistinctPortResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['DistinctPort'] = ResolversParentTypes['DistinctPort']> = {
   issPort?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type ElResolvers<ContextType = any, ParentType extends ResolversParentTypes['El'] = ResolversParentTypes['El']> = {
+export type ElResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['El'] = ResolversParentTypes['El']> = {
   degrees?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   dms?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type GemsGuideLoopResolvers<ContextType = any, ParentType extends ResolversParentTypes['GemsGuideLoop'] = ResolversParentTypes['GemsGuideLoop']> = {
+export type GemsGuideLoopResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['GemsGuideLoop'] = ResolversParentTypes['GemsGuideLoop']> = {
   anisopl?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   aoEnabled?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   flexure?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
@@ -829,7 +830,7 @@ export type GemsGuideLoopResolvers<ContextType = any, ParentType extends Resolve
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type GemsInstrumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['GemsInstrument'] = ResolversParentTypes['GemsInstrument']> = {
+export type GemsInstrumentResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['GemsInstrument'] = ResolversParentTypes['GemsInstrument']> = {
   adc?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   astrometricMode?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   beamsplitter?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -837,20 +838,20 @@ export type GemsInstrumentResolvers<ContextType = any, ParentType extends Resolv
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type GuideAlarmResolvers<ContextType = any, ParentType extends ResolversParentTypes['GuideAlarm'] = ResolversParentTypes['GuideAlarm']> = {
+export type GuideAlarmResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['GuideAlarm'] = ResolversParentTypes['GuideAlarm']> = {
   enabled?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   limit?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type GuideAlarmsResolvers<ContextType = any, ParentType extends ResolversParentTypes['GuideAlarms'] = ResolversParentTypes['GuideAlarms']> = {
+export type GuideAlarmsResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['GuideAlarms'] = ResolversParentTypes['GuideAlarms']> = {
   OIWFS?: Resolver<ResolversTypes['GuideAlarm'], ParentType, ContextType>;
   PWFS1?: Resolver<ResolversTypes['GuideAlarm'], ParentType, ContextType>;
   PWFS2?: Resolver<ResolversTypes['GuideAlarm'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type GuideLoopResolvers<ContextType = any, ParentType extends ResolversParentTypes['GuideLoop'] = ResolversParentTypes['GuideLoop']> = {
+export type GuideLoopResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['GuideLoop'] = ResolversParentTypes['GuideLoop']> = {
   daytimeMode?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   lightPath?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   m1CorrectionsEnable?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
@@ -867,7 +868,7 @@ export type GuideLoopResolvers<ContextType = any, ParentType extends ResolversPa
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type InstrumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['Instrument'] = ResolversParentTypes['Instrument']> = {
+export type InstrumentResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Instrument'] = ResolversParentTypes['Instrument']> = {
   ao?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   extraParams?: Resolver<ResolversTypes['JSON'], ParentType, ContextType>;
   focusOffset?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
@@ -885,7 +886,7 @@ export interface JsonScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes
   name: 'JSON';
 }
 
-export type MechanismResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mechanism'] = ResolversParentTypes['Mechanism']> = {
+export type MechanismResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Mechanism'] = ResolversParentTypes['Mechanism']> = {
   agAcPickoffPark?: Resolver<ResolversTypes['StatusType'], ParentType, ContextType>;
   agAoFoldPark?: Resolver<ResolversTypes['StatusType'], ParentType, ContextType>;
   agParkAll?: Resolver<ResolversTypes['StatusType'], ParentType, ContextType>;
@@ -926,7 +927,7 @@ export type MechanismResolvers<ContextType = any, ParentType extends ResolversPa
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
+export type MutationResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   createConfiguration?: Resolver<ResolversTypes['Configuration'], ParentType, ContextType, RequireFields<MutationCreateConfigurationArgs, 'oiGuidingType' | 'p1GuidingType' | 'p2GuidingType'>>;
   createInstrument?: Resolver<ResolversTypes['Instrument'], ParentType, ContextType, RequireFields<MutationCreateInstrumentArgs, 'issPort' | 'name'>>;
   createTarget?: Resolver<ResolversTypes['Target'], ParentType, ContextType, RequireFields<MutationCreateTargetArgs, 'name' | 'type'>>;
@@ -946,7 +947,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   updateTarget?: Resolver<ResolversTypes['Target'], ParentType, ContextType, RequireFields<MutationUpdateTargetArgs, 'pk'>>;
 };
 
-export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+export type QueryResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   altairGuideLoop?: Resolver<Maybe<ResolversTypes['AltairGuideLoop']>, ParentType, ContextType>;
   altairInstrument?: Resolver<Maybe<ResolversTypes['AltairInstrument']>, ParentType, ContextType>;
   configuration?: Resolver<Maybe<ResolversTypes['Configuration']>, ParentType, ContextType, Partial<QueryConfigurationArgs>>;
@@ -967,20 +968,20 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   users?: Resolver<Array<ResolversTypes['User']>, ParentType, ContextType>;
 };
 
-export type RaResolvers<ContextType = any, ParentType extends ResolversParentTypes['RA'] = ResolversParentTypes['RA']> = {
+export type RaResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['RA'] = ResolversParentTypes['RA']> = {
   degrees?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   hms?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type RotatorResolvers<ContextType = any, ParentType extends ResolversParentTypes['Rotator'] = ResolversParentTypes['Rotator']> = {
+export type RotatorResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Rotator'] = ResolversParentTypes['Rotator']> = {
   angle?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   pk?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   tracking?: Resolver<ResolversTypes['TrackingType'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type SlewFlagsResolvers<ContextType = any, ParentType extends ResolversParentTypes['SlewFlags'] = ResolversParentTypes['SlewFlags']> = {
+export type SlewFlagsResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['SlewFlags'] = ResolversParentTypes['SlewFlags']> = {
   autoparkAowfs?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   autoparkGems?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   autoparkOiwfs?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
@@ -1001,7 +1002,7 @@ export type SlewFlagsResolvers<ContextType = any, ParentType extends ResolversPa
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type TargetResolvers<ContextType = any, ParentType extends ResolversParentTypes['Target'] = ResolversParentTypes['Target']> = {
+export type TargetResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Target'] = ResolversParentTypes['Target']> = {
   az?: Resolver<Maybe<ResolversTypes['Az']>, ParentType, ContextType>;
   createdAt?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
   dec?: Resolver<Maybe<ResolversTypes['Dec']>, ParentType, ContextType>;
@@ -1015,13 +1016,13 @@ export type TargetResolvers<ContextType = any, ParentType extends ResolversParen
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
+export type UserResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   pk?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Resolvers<ContextType = any> = {
+export type Resolvers<ContextType = ApolloContext> = {
   AltairGuideLoop?: AltairGuideLoopResolvers<ContextType>;
   AltairInstrument?: AltairInstrumentResolvers<ContextType>;
   Az?: AzResolvers<ContextType>;
