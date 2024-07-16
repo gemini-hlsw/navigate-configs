@@ -115,6 +115,7 @@ export type GuideAlarm = {
   __typename?: 'GuideAlarm';
   enabled: Scalars['Boolean']['output'];
   limit: Scalars['Int']['output'];
+  wfs: WfsType;
 };
 
 export type GuideAlarms = {
@@ -841,6 +842,7 @@ export type GemsInstrumentResolvers<ContextType = ApolloContext, ParentType exte
 export type GuideAlarmResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['GuideAlarm'] = ResolversParentTypes['GuideAlarm']> = {
   enabled?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   limit?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  wfs?: Resolver<ResolversTypes['WfsType'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 

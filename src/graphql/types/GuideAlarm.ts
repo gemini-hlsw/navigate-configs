@@ -1,5 +1,6 @@
 export const GuideAlarmTypeDefs = `#graphql
 type GuideAlarm {
+  wfs: WfsType!
   limit: Int!
   enabled: Boolean!
 }
