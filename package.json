@@ -24,7 +24,7 @@
     "prepare": "node .husky/install.js"
   },
   "dependencies": {
-    "@apollo/server": "^4.10.4",
+    "@apollo/server": "^4.10.5",
     "@prisma/client": "^5.17.0",
     "graphql": "^16.9.0",
     "graphql-scalars": "^1.23.0",
