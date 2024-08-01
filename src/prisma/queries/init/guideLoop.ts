@@ -2,16 +2,16 @@ import { Prisma } from '@prisma/client';
 
 export const INITIAL_GUIDE_LOOP: Prisma.GuideLoopCreateInput = {
   m2TipTiltEnable: true,
-  m2TipTiltSource: 'PWFS1',
+  m2TipTiltSource: 'OIWFS',
   m2FocusEnable: true,
-  m2FocusSource: 'PWFS2',
+  m2FocusSource: 'OIWFS',
   m2TipTiltFocusLink: true,
   m2ComaEnable: true,
   m1CorrectionsEnable: true,
-  m2ComaM1CorrectionsSource: 'OIWFS',
+  m2ComaM1CorrectionsSource: '',
   mountOffload: true,
   daytimeMode: true,
-  probeTracking: 'PWFS1',
+  probeTracking: 'OIWFS',
   lightPath: 'Sky ➡ AO ➡ AC',
 };
 
