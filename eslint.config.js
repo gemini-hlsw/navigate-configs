@@ -13,6 +13,9 @@ export default tseslint.config(
         project: true,
       },
     },
+    linterOptions: {
+      reportUnusedDisableDirectives: 'error',
+    },
     rules: {
       // Custom rules here
     },
