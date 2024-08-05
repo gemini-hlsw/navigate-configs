@@ -18,6 +18,13 @@ export default tseslint.config(
     },
   },
   {
+    // Test-specific rules
+    files: ['src/integration/**/*.ts', 'src/**/*.test.ts', 'src/**/*.spec.ts'],
+    rules: {
+      '@typescript-eslint/no-unused-expressions': 'off',
+    },
+  },
+  {
     files: ['*.js', '*.config.{js,ts}', 'tasks/**/*.{js,ts}', '.husky/**/*.{js,ts}'],
     ...tseslint.configs.disableTypeChecked,
   },
