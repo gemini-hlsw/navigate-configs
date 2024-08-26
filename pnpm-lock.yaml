@@ -21,8 +21,8 @@ importers:
         specifier: ^1.23.0
         version: 1.23.0(graphql@16.9.0)
       lucuma-core:
-        specifier: ^0.102.0
-        version: 0.102.0
+        specifier: ^0.103.0
+        version: 0.103.0
       prisma:
         specifier: ^5.18.0
         version: 5.18.0
@@ -2297,8 +2297,8 @@ packages:
     resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
     engines: {node: '>=12'}
 
-  lucuma-core@0.102.0:
-    resolution: {integrity: sha512-/cjnnGr7UgxME0gjcyRA5U2CQuyopFmXADCw4/ZlBIcCsh68vr/GIFv2snwtH6Y8XKVD2idUm9zfP27xToJRFQ==}
+  lucuma-core@0.103.0:
+    resolution: {integrity: sha512-T8asZBEmNfJDF6HEp0bxmBK3yWhHrtJCP8Tj+NgziKpsMFJLCy9p2eIvTajwDaBkncHKNmKfpg4+jWHiC1IbZw==}
 
   map-cache@0.2.2:
     resolution: {integrity: sha512-8y/eV9QQZCiyn1SprXSrCmqJN0yNRATe+PO8ztwqrvrbdRLA3eYJF0yaR0YayLWkMbsQSKWS9N2gPcGEc4UsZg==}
@@ -5955,7 +5955,7 @@ snapshots:
 
   lru-cache@7.18.3: {}
 
-  lucuma-core@0.102.0: {}
+  lucuma-core@0.103.0: {}
 
   map-cache@0.2.2: {}
 
