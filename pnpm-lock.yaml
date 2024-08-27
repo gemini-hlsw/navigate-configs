@@ -46,16 +46,16 @@ importers:
         specifier: 10.12.0
         version: 10.12.0
       '@types/chai':
-        specifier: ^4.3.18
+        specifier: 4.3.18
         version: 4.3.18
       '@types/eslint__js':
-        specifier: ^8.42.3
+        specifier: 8.42.3
         version: 8.42.3
       '@types/mocha':
-        specifier: ^10.0.7
+        specifier: 10.0.7
         version: 10.0.7
       '@types/node':
-        specifier: ^22.5.0
+        specifier: 22.5.0
         version: 22.5.0
       chai:
         specifier: ^5.1.1
