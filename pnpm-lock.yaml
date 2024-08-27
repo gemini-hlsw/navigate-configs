@@ -9,16 +9,16 @@ importers:
   .:
     dependencies:
       '@apollo/server':
-        specifier: ^4.11.0
+        specifier: 4.11.0
         version: 4.11.0(graphql@16.9.0)
       '@prisma/client':
         specifier: ^5.18.0
         version: 5.18.0(prisma@5.18.0)
       graphql:
-        specifier: ^16.9.0
+        specifier: 16.9.0
         version: 16.9.0
       graphql-scalars:
-        specifier: ^1.23.0
+        specifier: 1.23.0
         version: 1.23.0(graphql@16.9.0)
       lucuma-core:
         specifier: ^0.103.0
@@ -31,13 +31,13 @@ importers:
         specifier: ^9.9.1
         version: 9.9.1
       '@graphql-codegen/cli':
-        specifier: ^5.0.2
+        specifier: 5.0.2
         version: 5.0.2(@parcel/watcher@2.4.1)(@types/node@22.5.0)(graphql@16.9.0)(typescript@5.5.4)
       '@graphql-codegen/typescript':
-        specifier: ^4.0.9
+        specifier: 4.0.9
         version: 4.0.9(graphql@16.9.0)
       '@graphql-codegen/typescript-resolvers':
-        specifier: ^4.2.1
+        specifier: 4.2.1
         version: 4.2.1(graphql@16.9.0)
       '@parcel/watcher':
         specifier: ^2.4.1
@@ -3174,11 +3174,6 @@ packages:
   yaml-ast-parser@0.0.43:
     resolution: {integrity: sha512-2PTINUwsRqSd+s8XxKaJWQlUuEMHJQyEuh2edBbW8KNJz0SJPwUSD2zRWqezFEdN7IzAgeuYHFUCF7o8zRdZ0A==}
 
-  yaml@2.4.5:
-    resolution: {integrity: sha512-aBx2bnqDzVOyNKfsysjA2ms5ZlnjSAW2eG3/L5G/CSujfjLJTJsEw1bGw8kCf04KodQWk1pxlGnZ56CRxiawmg==}
-    engines: {node: '>= 14'}
-    hasBin: true
-
   yaml@2.5.0:
     resolution: {integrity: sha512-2wWLbGbYDiSqqIKoPjar3MPgB94ErzCtrNE1FdqGuaO0pi2JGjmE8aW8TDZwzU7vuxcGRdL/4gPQwQ7hD5AMSw==}
     engines: {node: '>= 14'}
@@ -3810,7 +3805,7 @@ snapshots:
       string-env-interpolation: 1.0.1
       ts-log: 2.2.5
       tslib: 2.6.3
-      yaml: 2.4.5
+      yaml: 2.5.0
       yargs: 17.7.2
     optionalDependencies:
       '@parcel/watcher': 2.4.1
@@ -6807,8 +6802,6 @@ snapshots:
   yallist@3.1.1: {}
 
   yaml-ast-parser@0.0.43: {}
-
-  yaml@2.4.5: {}
 
   yaml@2.5.0: {}
 
