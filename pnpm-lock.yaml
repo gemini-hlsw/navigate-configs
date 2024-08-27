@@ -58,7 +58,7 @@ importers:
         specifier: 22.5.0
         version: 22.5.0
       chai:
-        specifier: ^5.1.1
+        specifier: 5.1.1
         version: 5.1.1
       eslint:
         specifier: 9.9.1
@@ -73,7 +73,7 @@ importers:
         specifier: 15.2.9
         version: 15.2.9
       mocha:
-        specifier: ^10.7.3
+        specifier: 10.7.3
         version: 10.7.3
       prettier:
         specifier: 3.3.3
