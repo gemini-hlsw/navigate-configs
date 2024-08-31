@@ -27,7 +27,7 @@
     "@prisma/client": "5.18.0",
     "graphql": "16.9.0",
     "graphql-scalars": "1.23.0",
-    "lucuma-core": "0.103.0",
+    "lucuma-core": "0.104.0",
     "prisma": "5.18.0"
   },
   "devDependencies": {
