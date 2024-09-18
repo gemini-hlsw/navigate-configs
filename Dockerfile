@@ -3,14 +3,12 @@ FROM node:22.8.0-alpine AS base
 
 # Create app directory
 WORKDIR /usr/src/app
-RUN  apk add --no-cache openssl
+RUN apk add --no-cache openssl
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
 
-# Installs pnpm
-RUN pnpm --version
+RUN corepack enable
 
 # Create volume for DB initialization
 RUN mkdir /usr/src/app/dbinit
@@ -21,6 +19,8 @@ RUN chown -R software:software /usr/src/app
 USER software
 
 COPY --chown=software:software . .
+
+RUN corepack install --global pnpm
 
 # Separate layer for dependencies, caching the npm cache
 FROM base AS prod-deps
