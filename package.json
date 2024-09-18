@@ -1,7 +1,7 @@
 {
   "name": "navigate-configs",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "type": "module",
   "packageManager": "pnpm@9.10.0",
@@ -56,5 +56,10 @@
   },
   "lint-staged": {
     "*.{js,mjs,ts,tsx,jsx,css,md,json,yml}": "prettier --write"
-  }
+  },
+  "files": [
+    "dist",
+    "prisma",
+    "src"
+  ]
 }
