@@ -8,3 +8,4 @@ tasks
 .github
 *.svg
 .env*
+eslint.config.js
