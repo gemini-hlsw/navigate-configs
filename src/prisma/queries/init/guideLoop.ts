@@ -11,7 +11,7 @@ export const INITIAL_GUIDE_LOOP: Prisma.GuideLoopCreateInput = {
   m2ComaM1CorrectionsSource: '',
   mountOffload: true,
   daytimeMode: true,
-  probeTracking: 'OIWFS',
+  probeTracking: 'NONE',
   lightPath: 'Sky ➡ AO ➡ AC',
 };
 
