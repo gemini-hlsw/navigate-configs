@@ -1,5 +1,5 @@
 # Base image with Node.js and pnpm and a custom user
-FROM node:22.9.0-alpine AS base
+FROM node:22.10.0-alpine AS base
 
 # Create app directory
 WORKDIR /usr/src/app
