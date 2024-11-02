@@ -31,7 +31,7 @@
     "prisma": "5.21.1"
   },
   "devDependencies": {
-    "@eslint/js": "9.13.0",
+    "@eslint/js": "9.14.0",
     "@graphql-codegen/cli": "5.0.3",
     "@graphql-codegen/typescript": "4.1.1",
     "@graphql-codegen/typescript-resolvers": "4.4.0",
@@ -42,14 +42,14 @@
     "@types/mocha": "10.0.9",
     "@types/node": "22.8.6",
     "chai": "5.1.2",
-    "eslint": "9.13.0",
+    "eslint": "9.14.0",
     "execa": "9.5.1",
     "husky": "9.1.6",
     "lint-staged": "15.2.10",
     "mocha": "10.7.3",
     "prettier": "3.3.3",
     "typescript": "5.6.3",
-    "typescript-eslint": "8.11.0"
+    "typescript-eslint": "8.12.2"
   },
   "prisma": {
     "seed": "pnpm preview populate"
