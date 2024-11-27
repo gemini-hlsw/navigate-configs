@@ -1,5 +1,5 @@
-import { PrismaClient } from '@prisma/client';
-import { deg2hms, deg2dms } from 'lucuma-core';
+import type { PrismaClient } from '@prisma/client';
+import { deg2dms, deg2hms } from 'lucuma-core';
 
 /**
  * Extend the prisma client by adding computed fields to Target

@@ -1,4 +1,4 @@
-import { Resolvers } from '../gen/index.js';
+import type { Resolvers } from '../gen/index.js';
 
 export const GemsGuideLoopResolver: Resolvers = {
   Query: {

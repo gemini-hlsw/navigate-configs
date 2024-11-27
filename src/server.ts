@@ -1,5 +1,6 @@
 import { ApolloServer } from '@apollo/server';
 import { DateTimeResolver, JSONResolver } from 'graphql-scalars';
+
 import { AltairGuideLoopResolver } from './graphql/resolvers/AltairGuideLoop.js';
 import { AltairInstrumentResolver } from './graphql/resolvers/AltairInstrument.js';
 import { ConfigurationResolver } from './graphql/resolvers/Configuration.js';
@@ -13,9 +14,8 @@ import { RotatorResolver } from './graphql/resolvers/Rotator.js';
 import { SlewFlagsResolver } from './graphql/resolvers/SlewFlags.js';
 import { TargetResolver } from './graphql/resolvers/Target.js';
 import { UserResolver } from './graphql/resolvers/User.js';
-import { typeDefs } from './typeDefs.js';
-
 import type { Prisma } from './prisma/db.js';
+import { typeDefs } from './typeDefs.js';
 
 // Resolvers define how to fetch the types defined in your schema.
 const resolvers = {

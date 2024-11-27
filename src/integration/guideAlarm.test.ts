@@ -1,5 +1,6 @@
 import { expect } from 'chai';
-import { MutationUpdateGuideAlarmArgs } from '../graphql/gen/index.js';
+
+import type { MutationUpdateGuideAlarmArgs } from '../graphql/gen/index.js';
 import { initializeServerFixture } from './setup.js';
 
 describe('GuideAlarm', () => {
