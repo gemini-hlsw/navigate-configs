@@ -1,12 +1,16 @@
 // @ts-check
 
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import importX from 'eslint-plugin-import-x';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import { config, configs } from 'typescript-eslint';
 
-export default tseslint.config(
+export default config(
   eslint.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
+  ...configs.recommendedTypeChecked,
+  ...configs.stylisticTypeChecked,
+  importX.flatConfigs.recommended,
+  importX.flatConfigs.typescript,
   {
     languageOptions: {
       parserOptions: {
@@ -17,7 +21,18 @@ export default tseslint.config(
       reportUnusedDisableDirectives: 'error',
     },
     rules: {
-      // Custom rules here
+      '@typescript-eslint/consistent-type-imports': 'error',
+
+      'import-x/newline-after-import': 'error',
+      'import-x/no-deprecated': 'error',
+
+      'simple-import-sort/exports': 'error',
+      'simple-import-sort/imports': 'error',
+
+      eqeqeq: 'error',
+    },
+    plugins: {
+      'simple-import-sort': simpleImportSort,
     },
   },
   {
@@ -29,7 +44,7 @@ export default tseslint.config(
   },
   {
     files: ['*.js', '*.config.{js,ts}', 'tasks/**/*.{js,ts}', '.husky/**/*.{js,ts}'],
-    ...tseslint.configs.disableTypeChecked,
+    ...configs.disableTypeChecked,
   },
   {
     ignores: ['node_modules', 'dist', 'public', 'reports', 'src/graphql/gen'],
