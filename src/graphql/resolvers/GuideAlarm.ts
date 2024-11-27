@@ -1,6 +1,7 @@
-import { GuideAlarm } from '@prisma/client';
-import { FieldNode } from 'graphql';
-import { Resolvers, WfsType } from '../gen/index.js';
+import type { GuideAlarm } from '@prisma/client';
+import type { FieldNode } from 'graphql';
+
+import type { Resolvers, WfsType } from '../gen/index.js';
 
 export const GuideAlarmResolver: Resolvers = {
   Query: {

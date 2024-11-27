@@ -1,4 +1,5 @@
 import type { CodegenConfig } from '@graphql-codegen/cli';
+
 import { typeDefs } from '../src/typeDefs';
 
 const config: CodegenConfig = {

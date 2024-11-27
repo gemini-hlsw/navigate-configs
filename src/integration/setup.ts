@@ -1,12 +1,15 @@
-import { GraphQLRequest } from '@apollo/server';
+import type { GraphQLRequest } from '@apollo/server';
 import { PrismaClient } from '@prisma/client';
-import { PostgreSqlContainer, StartedPostgreSqlContainer } from '@testcontainers/postgresql';
+import type { StartedPostgreSqlContainer } from '@testcontainers/postgresql';
+import { PostgreSqlContainer } from '@testcontainers/postgresql';
 import { assert, expect } from 'chai';
 import { execa } from 'execa';
-import { FormattedExecutionResult } from 'graphql';
-import { Prisma } from '../prisma/db.js';
+import type { FormattedExecutionResult } from 'graphql';
+
+import type { Prisma } from '../prisma/db.js';
 import { extendPrisma } from '../prisma/extend.js';
-import { ApolloContext, server } from '../server.js';
+import type { ApolloContext } from '../server.js';
+import { server } from '../server.js';
 
 export interface ServerFixture {
   /**

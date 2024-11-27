@@ -1,4 +1,4 @@
-import { Prisma } from '@prisma/client';
+import type { Prisma } from '@prisma/client';
 
 export const INITIAL_ROTATOR: Prisma.RotatorCreateInput = {
   angle: 0.0,
