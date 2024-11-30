@@ -31,7 +31,7 @@
     "prisma": "5.22.0"
   },
   "devDependencies": {
-    "@eslint/js": "9.15.0",
+    "@eslint/js": "9.16.0",
     "@graphql-codegen/cli": "5.0.3",
     "@graphql-codegen/typescript": "4.1.2",
     "@graphql-codegen/typescript-resolvers": "4.4.1",
@@ -42,7 +42,7 @@
     "@types/mocha": "10.0.10",
     "@types/node": "22.10.1",
     "chai": "5.1.2",
-    "eslint": "9.15.0",
+    "eslint": "9.16.0",
     "eslint-import-resolver-typescript": "3.6.3",
     "eslint-plugin-import-x": "4.4.3",
     "eslint-plugin-simple-import-sort": "12.1.1",
