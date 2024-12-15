@@ -25,7 +25,7 @@
   "dependencies": {
     "@apollo/server": "4.11.2",
     "@prisma/client": "6.0.1",
-    "graphql": "16.9.0",
+    "graphql": "16.10.0",
     "graphql-scalars": "1.24.0",
     "lucuma-core": "0.111.1",
     "prisma": "6.0.1"
