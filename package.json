@@ -4,7 +4,7 @@
   "main": "dist/index.js",
   "license": "MIT",
   "type": "module",
-  "packageManager": "pnpm@9.15.1",
+  "packageManager": "pnpm@9.15.2",
   "scripts": {
     "test": "pnpm test:integration",
     "test:integration": "mocha --node-option enable-source-maps --timeout 20s --forbid-only --forbid-pending dist/integration/**/*.test.js",
