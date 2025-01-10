@@ -41,14 +41,15 @@ enum GuidingType {
 }
 
 model Target {
-  pk        Int        @id @default(autoincrement())
-  id        String?
-  name      String     @default("Test")
-  coord1    Float // RA or Az
-  coord2    Float // Dec or El
-  epoch     String     @default("J2000.000")
-  type      TargetType @default(SCIENCE) // FIXED | SCIENCE | BLINDOFFSET | OIWFS | PWFS1 | PWFS2
-  createdAt DateTime   @default(now())
+  pk         Int        @id @default(autoincrement())
+  id         String?
+  name       String     @default("Test")
+  coord1     Float // RA or Az
+  coord2     Float // Dec or El
+  epoch      String     @default("J2000.000")
+  type       TargetType @default(SCIENCE) // FIXED | SCIENCE | BLINDOFFSET | OIWFS | PWFS1 | PWFS2
+  wavelength Int?
+  createdAt  DateTime   @default(now())
 }
 
 enum TargetType {

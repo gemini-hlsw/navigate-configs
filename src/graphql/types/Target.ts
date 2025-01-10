@@ -39,6 +39,7 @@ export const TargetTypeDefs = `#graphql
     dec: Dec            # Declination
     epoch: String!       # Epoch of target
     type: TargetType!    # FIXED | SCIENCE | BLINDOFFSET | PWFS1 | PWFS2 | OIWFS
+    wavelength: Int      # Wavelength
     createdAt: DateTime!   # Datetime when it was created
   }
 
@@ -57,6 +58,7 @@ export const TargetTypeDefs = `#graphql
     coord2: Float
     epoch: String
     type: String
+    wavelength: Int
   }
 
   type Mutation {
@@ -69,6 +71,7 @@ export const TargetTypeDefs = `#graphql
       el: Float
       epoch: String
       type: TargetType!
+      wavelength: Int
     ): Target!
 
     updateTarget(
@@ -79,6 +82,7 @@ export const TargetTypeDefs = `#graphql
       coord2: Float
       epoch: String
       type: TargetType
+      wavelength: Int
     ): Target!
 
     removeAndCreateBaseTargets(
