@@ -24,11 +24,11 @@
   },
   "dependencies": {
     "@apollo/server": "4.11.3",
-    "@prisma/client": "6.1.0",
+    "@prisma/client": "6.2.1",
     "graphql": "16.10.0",
     "graphql-scalars": "1.24.0",
     "lucuma-core": "0.113.0",
-    "prisma": "6.1.0"
+    "prisma": "6.2.1"
   },
   "devDependencies": {
     "@eslint/js": "9.18.0",
