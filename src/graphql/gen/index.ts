@@ -260,6 +260,7 @@ export type MutationCreateTargetArgs = {
   name: Scalars['String']['input'];
   ra?: InputMaybe<Scalars['Float']['input']>;
   type: TargetType;
+  wavelength?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -444,6 +445,7 @@ export type MutationUpdateTargetArgs = {
   name?: InputMaybe<Scalars['String']['input']>;
   pk: Scalars['Int']['input'];
   type?: InputMaybe<TargetType>;
+  wavelength?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type Query = {
@@ -567,6 +569,7 @@ export type Target = {
   pk: Scalars['Int']['output'];
   ra?: Maybe<Ra>;
   type: TargetType;
+  wavelength?: Maybe<Scalars['Int']['output']>;
 };
 
 export type TargetInput = {
@@ -576,6 +579,7 @@ export type TargetInput = {
   id?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   type?: InputMaybe<Scalars['String']['input']>;
+  wavelength?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type TargetType =
@@ -1015,6 +1019,7 @@ export type TargetResolvers<ContextType = ApolloContext, ParentType extends Reso
   pk?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   ra?: Resolver<Maybe<ResolversTypes['RA']>, ParentType, ContextType>;
   type?: Resolver<ResolversTypes['TargetType'], ParentType, ContextType>;
+  wavelength?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
