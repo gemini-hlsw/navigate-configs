@@ -20,7 +20,7 @@ USER software
 
 COPY --chown=software:software . .
 
-RUN corepack install --global pnpm
+RUN corepack install --global pnpm@9.15.3
 
 # Separate layer for dependencies, caching the npm cache
 FROM base AS prod-deps
@@ -35,8 +35,6 @@ RUN pnpm build
 # Final image
 FROM base
 ENV NODE_ENV=production
-RUN corepack install --global pnpm
-ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 
 # Copy built files
 COPY --from=prod-deps --chown=software:software /usr/src/app/node_modules /usr/src/app/node_modules
