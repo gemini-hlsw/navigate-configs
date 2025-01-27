@@ -18,9 +18,12 @@ RUN addgroup -S software -g 3624 && adduser -S software -u 3624 -G software
 RUN chown -R software:software /usr/src/app
 USER software
 
-COPY --chown=software:software . .
+# Add pnpm
+COPY --chown=software:software ./package.json ./package.json
+ENV COREPACK_DEFAULT_TO_LATEST=0
+RUN corepack install
 
-RUN corepack install --global pnpm@9.15.3
+COPY --chown=software:software . .
 
 # Separate layer for dependencies, caching the npm cache
 FROM base AS prod-deps
@@ -35,6 +38,7 @@ RUN pnpm build
 # Final image
 FROM base
 ENV NODE_ENV=production
+ENV COREPACK_ENABLE_NETWORK=0
 
 # Copy built files
 COPY --from=prod-deps --chown=software:software /usr/src/app/node_modules /usr/src/app/node_modules
