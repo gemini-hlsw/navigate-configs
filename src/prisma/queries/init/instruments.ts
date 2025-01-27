@@ -331,6 +331,28 @@ export const INITIAL_INSTRUMENTS: Prisma.InstrumentCreateInput[] = [
     originY: -31.3,
     extraParams: {},
   },
+  {
+    wfs: 'NONE',
+    iaa: 0,
+    issPort: 1,
+    focusOffset: 0.0,
+    name: 'AC_GS',
+    ao: false,
+    originX: 0.0,
+    originY: 0.0,
+    extraParams: {},
+  },
+  {
+    wfs: 'NONE',
+    iaa: 0,
+    issPort: 1,
+    focusOffset: 0.0,
+    name: 'AC_GN',
+    ao: false,
+    originX: 0.0,
+    originY: 0.0,
+    extraParams: {},
+  },
 ];
 
 export const INITIAL_GEMS_INSTRUMENT: Prisma.GemsInstrumentCreateInput = {
