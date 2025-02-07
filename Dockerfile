@@ -8,7 +8,7 @@ RUN apk add --no-cache openssl
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
-RUN corepack enable
+RUN npm install --global corepack@latest && corepack enable
 
 # Create volume for DB initialization
 RUN mkdir /usr/src/app/dbinit
