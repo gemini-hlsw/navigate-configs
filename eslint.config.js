@@ -22,7 +22,7 @@ export default config(
     },
     rules: {
       '@typescript-eslint/consistent-type-imports': 'error',
-
+      '@typescript-eslint/no-import-type-side-effects': 'error',
       'import-x/newline-after-import': 'error',
       'import-x/no-deprecated': 'error',
 
