@@ -8,6 +8,7 @@ if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
 else
     echo "-- Not first container startup --"
     echo "-- Running migrations --"
+    pnpm prisma generate
     pnpm prisma migrate deploy
     echo "-- Starting server --"
     pnpm preview
