@@ -1,8 +1,10 @@
+import assert from 'node:assert';
+import { after, before } from 'node:test';
+
 import type { GraphQLRequest } from '@apollo/server';
 import { PrismaClient } from '@prisma/client';
 import type { StartedPostgreSqlContainer } from '@testcontainers/postgresql';
 import { PostgreSqlContainer } from '@testcontainers/postgresql';
-import { assert, expect } from 'chai';
 import { execa } from 'execa';
 import type { FormattedExecutionResult } from 'graphql';
 
@@ -48,8 +50,8 @@ export function initializeServerFixture() {
     async function executeGraphql(options: GraphQLRequest) {
       const response = await server.executeOperation(options, { contextValue });
 
-      assert(response.body.kind === 'single');
-      expect(response.body.singleResult.errors).to.be.undefined;
+      assert.strictEqual(response.body.kind, 'single');
+      assert.ifError(response.body.singleResult.errors);
 
       return response.body.singleResult;
     }

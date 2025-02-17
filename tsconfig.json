@@ -7,7 +7,7 @@
     "module": "Node16",
     "moduleResolution": "Node16",
     "esModuleInterop": true,
-    "types": ["node", "mocha"],
+    "types": ["node"],
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
