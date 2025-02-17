@@ -7,7 +7,7 @@
   "packageManager": "pnpm@10.4.0",
   "scripts": {
     "test": "pnpm test:integration",
-    "test:integration": "mocha --node-option enable-source-maps --timeout 20s --forbid-only --forbid-pending dist/integration/**/*.test.js",
+    "test:integration": "node --test --enable-source-maps --test-timeout 20000 'dist/integration/**/*.test.js'",
     "generate": "prisma generate",
     "prebuild": "pnpm generate",
     "build": "tsc",
@@ -37,11 +37,8 @@
     "@graphql-codegen/typescript-resolvers": "4.4.2",
     "@parcel/watcher": "2.5.1",
     "@testcontainers/postgresql": "10.18.0",
-    "@types/chai": "5.0.1",
     "@types/eslint__js": "8.42.3",
-    "@types/mocha": "10.0.10",
     "@types/node": "22.13.4",
-    "chai": "5.2.0",
     "eslint": "9.20.1",
     "eslint-import-resolver-typescript": "3.8.0",
     "eslint-plugin-import-x": "4.6.1",
@@ -49,7 +46,6 @@
     "execa": "9.5.2",
     "husky": "9.1.7",
     "lint-staged": "15.4.3",
-    "mocha": "11.1.0",
     "prettier": "3.5.1",
     "typescript": "5.7.3",
     "typescript-eslint": "8.24.0"

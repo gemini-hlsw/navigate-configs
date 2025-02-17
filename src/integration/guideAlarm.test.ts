@@ -1,12 +1,13 @@
-import { expect } from 'chai';
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
 
 import type { MutationUpdateGuideAlarmArgs } from '../graphql/gen/index.js';
 import { initializeServerFixture } from './setup.js';
 
-describe('GuideAlarm', () => {
+await describe('GuideAlarm', async () => {
   const fixture = initializeServerFixture();
 
-  it('guideAlarms query returns seeded results', async () => {
+  await it('guideAlarms query returns seeded results', async () => {
     const response = await fixture.executeGraphql({
       query: `#graphql
         query guideAlarms {
@@ -28,7 +29,7 @@ describe('GuideAlarm', () => {
       variables: {},
     });
 
-    expect(response.data).deep.equals({
+    assert.partialDeepStrictEqual(response.data, {
       guideAlarms: {
         OIWFS: {
           enabled: true,
@@ -46,7 +47,7 @@ describe('GuideAlarm', () => {
     });
   });
 
-  it('updateGuideAlarm mutation updates the guide alarm', async () => {
+  await it('updateGuideAlarm mutation updates the guide alarm', async () => {
     await fixture.executeGraphql<MutationUpdateGuideAlarmArgs>({
       query: `#graphql
         mutation updateGuideAlarm($wfs: WfsType!, $enabled: Boolean, $limit: Int) {
@@ -62,7 +63,7 @@ describe('GuideAlarm', () => {
       },
     });
 
-    expect(await fixture.prisma.guideAlarm.findFirstOrThrow({ where: { wfs: 'PWFS1' } })).deep.equals({
+    assert.deepStrictEqual(await fixture.prisma.guideAlarm.findFirstOrThrow({ where: { wfs: 'PWFS1' } }), {
       wfs: 'PWFS1',
       enabled: false,
       limit: 1000,
