@@ -60,5 +60,10 @@
     "dist",
     "prisma",
     "src"
-  ]
+  ],
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@prisma/client"
+    ]
+  }
 }
