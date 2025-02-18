@@ -40,6 +40,9 @@ FROM base
 ENV NODE_ENV=production
 ENV COREPACK_ENABLE_NETWORK=0
 
+# Generate prisma client
+RUN pnpx prisma generate
+
 # Copy built files
 COPY --from=prod-deps --chown=software:software /usr/src/app/node_modules /usr/src/app/node_modules
 COPY --from=build --chown=software:software /usr/src/app/dist /usr/src/app/dist
