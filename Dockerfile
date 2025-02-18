@@ -46,5 +46,7 @@ COPY --from=build --chown=software:software /usr/src/app/dist /usr/src/app/dist
 
 EXPOSE 4000
 
+HEALTHCHECK --start-period=2s CMD ["./tasks/healthcheck.js"]
+
 # Start command
 CMD ["./start-server.sh"]

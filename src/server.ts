@@ -14,6 +14,7 @@ import { RotatorResolver } from './graphql/resolvers/Rotator.js';
 import { SlewFlagsResolver } from './graphql/resolvers/SlewFlags.js';
 import { TargetResolver } from './graphql/resolvers/Target.js';
 import { UserResolver } from './graphql/resolvers/User.js';
+import { VersionResolver } from './graphql/resolvers/Version.js';
 import type { Prisma } from './prisma/db.js';
 import { typeDefs } from './typeDefs.js';
 
@@ -27,6 +28,7 @@ const resolvers = {
     ...ConfigurationResolver.Query,
     ...GemsGuideLoopResolver.Query,
     ...GemsInstrumentResolver.Query,
+    ...GuideAlarmResolver.Query,
     ...GuideLoopResolver.Query,
     ...InstrumentResolver.Query,
     ...MechanismResolver.Query,
@@ -34,7 +36,7 @@ const resolvers = {
     ...SlewFlagsResolver.Query,
     ...TargetResolver.Query,
     ...UserResolver.Query,
-    ...GuideAlarmResolver.Query,
+    ...VersionResolver.Query,
   },
   Mutation: {
     ...AltairGuideLoopResolver.Mutation,
@@ -42,6 +44,7 @@ const resolvers = {
     ...ConfigurationResolver.Mutation,
     ...GemsGuideLoopResolver.Mutation,
     ...GemsInstrumentResolver.Mutation,
+    ...GuideAlarmResolver.Mutation,
     ...GuideLoopResolver.Mutation,
     ...InstrumentResolver.Mutation,
     ...MechanismResolver.Mutation,
@@ -49,7 +52,7 @@ const resolvers = {
     ...SlewFlagsResolver.Mutation,
     ...TargetResolver.Mutation,
     ...UserResolver.Mutation,
-    ...GuideAlarmResolver.Mutation,
+    ...VersionResolver.Mutation,
   },
 };
 
