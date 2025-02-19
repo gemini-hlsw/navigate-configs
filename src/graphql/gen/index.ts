@@ -468,6 +468,7 @@ export type Query = {
   targets: Array<Target>;
   user?: Maybe<User>;
   users: Array<User>;
+  version: Version;
 };
 
 
@@ -600,6 +601,12 @@ export type User = {
   pk: Scalars['Int']['output'];
 };
 
+export type Version = {
+  __typename?: 'Version';
+  databaseVersion: Scalars['String']['output'];
+  version: Scalars['String']['output'];
+};
+
 export type WfsType =
   | 'NONE'
   | 'OIWFS'
@@ -711,6 +718,7 @@ export type ResolversTypes = {
   TargetType: TargetType;
   TrackingType: TrackingType;
   User: ResolverTypeWrapper<User>;
+  Version: ResolverTypeWrapper<Version>;
   WfsType: WfsType;
 };
 
@@ -745,6 +753,7 @@ export type ResolversParentTypes = {
   Target: Target;
   TargetInput: TargetInput;
   User: User;
+  Version: Version;
 };
 
 export type AltairGuideLoopResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['AltairGuideLoop'] = ResolversParentTypes['AltairGuideLoop']> = {
@@ -972,6 +981,7 @@ export type QueryResolvers<ContextType = ApolloContext, ParentType extends Resol
   targets?: Resolver<Array<ResolversTypes['Target']>, ParentType, ContextType, Partial<QueryTargetsArgs>>;
   user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryUserArgs, 'pk'>>;
   users?: Resolver<Array<ResolversTypes['User']>, ParentType, ContextType>;
+  version?: Resolver<ResolversTypes['Version'], ParentType, ContextType>;
 };
 
 export type RaResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['RA'] = ResolversParentTypes['RA']> = {
@@ -1029,6 +1039,12 @@ export type UserResolvers<ContextType = ApolloContext, ParentType extends Resolv
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type VersionResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Version'] = ResolversParentTypes['Version']> = {
+  databaseVersion?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  version?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type Resolvers<ContextType = ApolloContext> = {
   AltairGuideLoop?: AltairGuideLoopResolvers<ContextType>;
   AltairInstrument?: AltairInstrumentResolvers<ContextType>;
@@ -1054,5 +1070,6 @@ export type Resolvers<ContextType = ApolloContext> = {
   SlewFlags?: SlewFlagsResolvers<ContextType>;
   Target?: TargetResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
+  Version?: VersionResolvers<ContextType>;
 };
 

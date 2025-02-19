@@ -1,4 +1,8 @@
 #!/bin/sh
+
+# Exit on failures
+set -e
+
 CONTAINER_ALREADY_STARTED="/usr/src/app/dbinit/CONTAINER_ALREADY_STARTED"
 if [ ! -e $CONTAINER_ALREADY_STARTED ]; then
     touch $CONTAINER_ALREADY_STARTED

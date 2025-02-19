@@ -3,6 +3,7 @@
 import eslint from '@eslint/js';
 import importX from 'eslint-plugin-import-x';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import globals from 'globals';
 import { config, configs } from 'typescript-eslint';
 
 export default config(
@@ -15,6 +16,9 @@ export default config(
     languageOptions: {
       parserOptions: {
         project: true,
+      },
+      globals: {
+        ...globals.node,
       },
     },
     linterOptions: {
