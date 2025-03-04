@@ -26,5 +26,11 @@ export const InstrumentResolver: Resolvers = {
     createInstrument: (_parent, args, { prisma }) => {
       return prisma.instrument.create({ data: { extraParams: {}, ...args } });
     },
+    updateInstrument: (_parent, args, { prisma }) => {
+      return prisma.instrument.update({
+        where: { pk: args.pk },
+        data: args,
+      });
+    },
   },
 };

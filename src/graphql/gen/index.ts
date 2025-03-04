@@ -215,6 +215,7 @@ export type Mutation = {
   updateGemsInstrument: GemsInstrument;
   updateGuideAlarm: GuideAlarm;
   updateGuideLoop: GuideLoop;
+  updateInstrument: Instrument;
   updateMechanism: Mechanism;
   updateRotator: Rotator;
   updateSlewFlags: SlewFlags;
@@ -365,6 +366,20 @@ export type MutationUpdateGuideLoopArgs = {
   mountOffload?: InputMaybe<Scalars['Boolean']['input']>;
   pk: Scalars['Int']['input'];
   probeTracking?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type MutationUpdateInstrumentArgs = {
+  ao?: InputMaybe<Scalars['Boolean']['input']>;
+  extraParams?: InputMaybe<Scalars['JSON']['input']>;
+  focusOffset?: InputMaybe<Scalars['Float']['input']>;
+  iaa?: InputMaybe<Scalars['Float']['input']>;
+  issPort?: InputMaybe<Scalars['Int']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  originX?: InputMaybe<Scalars['Float']['input']>;
+  originY?: InputMaybe<Scalars['Float']['input']>;
+  pk: Scalars['Int']['input'];
+  wfs?: InputMaybe<WfsType>;
 };
 
 
@@ -956,6 +971,7 @@ export type MutationResolvers<ContextType = ApolloContext, ParentType extends Re
   updateGemsInstrument?: Resolver<ResolversTypes['GemsInstrument'], ParentType, ContextType, RequireFields<MutationUpdateGemsInstrumentArgs, 'pk'>>;
   updateGuideAlarm?: Resolver<ResolversTypes['GuideAlarm'], ParentType, ContextType, RequireFields<MutationUpdateGuideAlarmArgs, 'wfs'>>;
   updateGuideLoop?: Resolver<ResolversTypes['GuideLoop'], ParentType, ContextType, RequireFields<MutationUpdateGuideLoopArgs, 'pk'>>;
+  updateInstrument?: Resolver<ResolversTypes['Instrument'], ParentType, ContextType, RequireFields<MutationUpdateInstrumentArgs, 'pk'>>;
   updateMechanism?: Resolver<ResolversTypes['Mechanism'], ParentType, ContextType, RequireFields<MutationUpdateMechanismArgs, 'pk'>>;
   updateRotator?: Resolver<ResolversTypes['Rotator'], ParentType, ContextType, RequireFields<MutationUpdateRotatorArgs, 'pk'>>;
   updateSlewFlags?: Resolver<ResolversTypes['SlewFlags'], ParentType, ContextType, RequireFields<MutationUpdateSlewFlagsArgs, 'pk'>>;
