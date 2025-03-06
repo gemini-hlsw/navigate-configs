@@ -63,5 +63,18 @@ export const InstrumentTypeDefs = `#graphql
       ao: Boolean         # Adaptive Optics is being used?
       extraParams: JSON   # Instrument dependent set of parameters
     ): Instrument!
+
+    updateInstrument(
+      pk: Int!
+      name: String
+      iaa: Float
+      issPort: Int
+      focusOffset: Float
+      wfs: WfsType
+      originX: Float
+      originY: Float
+      ao: Boolean
+      extraParams: JSON
+    ): Instrument!
   }
 `;
