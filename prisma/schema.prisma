@@ -29,6 +29,7 @@ model Configuration {
   obsId            String?
   obsInstrument    String?
   obsSubtitle      String?
+  obsReference     String?
 }
 
 enum SiteType {
