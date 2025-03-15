@@ -22,6 +22,7 @@ export const ConfigurationTypeDefs = `#graphql
     obsId: String
     obsInstrument: String
     obsSubtitle: String
+    obsReference: String
   }
 
   # The "Query" type is special: it lists all of the available queries that
@@ -45,6 +46,7 @@ export const ConfigurationTypeDefs = `#graphql
       obsId: String
       obsInstrument: String
       obsSubtitle: String
+      obsReference: String
     ): Configuration!
 
     updateConfiguration(
@@ -61,6 +63,7 @@ export const ConfigurationTypeDefs = `#graphql
       obsId: String
       obsInstrument: String
       obsSubtitle: String
+      obsReference: String
     ): Configuration!
   }
 `;

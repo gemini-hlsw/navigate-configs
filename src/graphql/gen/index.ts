@@ -57,6 +57,7 @@ export type Configuration = {
   __typename?: 'Configuration';
   obsId?: Maybe<Scalars['String']['output']>;
   obsInstrument?: Maybe<Scalars['String']['output']>;
+  obsReference?: Maybe<Scalars['String']['output']>;
   obsSubtitle?: Maybe<Scalars['String']['output']>;
   obsTitle?: Maybe<Scalars['String']['output']>;
   oiGuidingType: GuidingType;
@@ -226,6 +227,7 @@ export type Mutation = {
 export type MutationCreateConfigurationArgs = {
   obsId?: InputMaybe<Scalars['String']['input']>;
   obsInstrument?: InputMaybe<Scalars['String']['input']>;
+  obsReference?: InputMaybe<Scalars['String']['input']>;
   obsSubtitle?: InputMaybe<Scalars['String']['input']>;
   obsTitle?: InputMaybe<Scalars['String']['input']>;
   oiGuidingType: GuidingType;
@@ -312,6 +314,7 @@ export type MutationUpdateAltairInstrumentArgs = {
 export type MutationUpdateConfigurationArgs = {
   obsId?: InputMaybe<Scalars['String']['input']>;
   obsInstrument?: InputMaybe<Scalars['String']['input']>;
+  obsReference?: InputMaybe<Scalars['String']['input']>;
   obsSubtitle?: InputMaybe<Scalars['String']['input']>;
   obsTitle?: InputMaybe<Scalars['String']['input']>;
   oiGuidingType?: InputMaybe<GuidingType>;
@@ -808,6 +811,7 @@ export type AzResolvers<ContextType = ApolloContext, ParentType extends Resolver
 export type ConfigurationResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Configuration'] = ResolversParentTypes['Configuration']> = {
   obsId?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   obsInstrument?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  obsReference?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   obsSubtitle?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   obsTitle?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   oiGuidingType?: Resolver<ResolversTypes['GuidingType'], ParentType, ContextType>;
