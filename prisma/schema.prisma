@@ -225,6 +225,21 @@ model GuideAlarm {
   enabled Boolean @default(true)
 }
 
+model Log {
+  id      Int      @id @default(autoincrement())
+  time    DateTime
+  message String
+  level   LogLevel
+}
+
+enum LogLevel {
+  DEBUG
+  ERROR
+  INFO
+  TRACE
+  WARN
+}
+
 // model pwfs1 {
 //   pk Int @id @default(autoincrement())
 //   filter String

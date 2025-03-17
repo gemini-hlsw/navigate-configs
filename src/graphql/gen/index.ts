@@ -160,6 +160,21 @@ export type Instrument = {
   wfs: WfsType;
 };
 
+export type Log = {
+  __typename?: 'Log';
+  id: Scalars['Int']['output'];
+  level: LogLevel;
+  message: Scalars['String']['output'];
+  time: Scalars['DateTime']['output'];
+};
+
+export type LogLevel =
+  | 'DEBUG'
+  | 'ERROR'
+  | 'INFO'
+  | 'TRACE'
+  | 'WARN';
+
 export type Mechanism = {
   __typename?: 'Mechanism';
   agAcPickoffPark: StatusType;
@@ -203,6 +218,7 @@ export type Mechanism = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  addLog?: Maybe<Array<Log>>;
   createConfiguration: Configuration;
   createInstrument: Instrument;
   createTarget: Target;
@@ -221,6 +237,13 @@ export type Mutation = {
   updateRotator: Rotator;
   updateSlewFlags: SlewFlags;
   updateTarget: Target;
+};
+
+
+export type MutationAddLogArgs = {
+  level: LogLevel;
+  message: Scalars['String']['input'];
+  time: Scalars['DateTime']['input'];
 };
 
 
@@ -479,6 +502,7 @@ export type Query = {
   guideLoop?: Maybe<GuideLoop>;
   instrument?: Maybe<Instrument>;
   instruments: Array<Instrument>;
+  logs?: Maybe<Array<Log>>;
   mechanism?: Maybe<Mechanism>;
   rotator?: Maybe<Rotator>;
   slewFlags?: Maybe<SlewFlags>;
@@ -722,6 +746,8 @@ export type ResolversTypes = {
   Instrument: ResolverTypeWrapper<Instrument>;
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   JSON: ResolverTypeWrapper<Scalars['JSON']['output']>;
+  Log: ResolverTypeWrapper<Log>;
+  LogLevel: LogLevel;
   Mechanism: ResolverTypeWrapper<Mechanism>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
@@ -761,6 +787,7 @@ export type ResolversParentTypes = {
   Instrument: Instrument;
   Int: Scalars['Int']['output'];
   JSON: Scalars['JSON']['output'];
+  Log: Log;
   Mechanism: Mechanism;
   Mutation: {};
   Query: {};
@@ -920,6 +947,14 @@ export interface JsonScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes
   name: 'JSON';
 }
 
+export type LogResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Log'] = ResolversParentTypes['Log']> = {
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  level?: Resolver<ResolversTypes['LogLevel'], ParentType, ContextType>;
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  time?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type MechanismResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Mechanism'] = ResolversParentTypes['Mechanism']> = {
   agAcPickoffPark?: Resolver<ResolversTypes['StatusType'], ParentType, ContextType>;
   agAoFoldPark?: Resolver<ResolversTypes['StatusType'], ParentType, ContextType>;
@@ -962,6 +997,7 @@ export type MechanismResolvers<ContextType = ApolloContext, ParentType extends R
 };
 
 export type MutationResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
+  addLog?: Resolver<Maybe<Array<ResolversTypes['Log']>>, ParentType, ContextType, RequireFields<MutationAddLogArgs, 'level' | 'message' | 'time'>>;
   createConfiguration?: Resolver<ResolversTypes['Configuration'], ParentType, ContextType, RequireFields<MutationCreateConfigurationArgs, 'oiGuidingType' | 'p1GuidingType' | 'p2GuidingType'>>;
   createInstrument?: Resolver<ResolversTypes['Instrument'], ParentType, ContextType, RequireFields<MutationCreateInstrumentArgs, 'issPort' | 'name'>>;
   createTarget?: Resolver<ResolversTypes['Target'], ParentType, ContextType, RequireFields<MutationCreateTargetArgs, 'name' | 'type'>>;
@@ -994,6 +1030,7 @@ export type QueryResolvers<ContextType = ApolloContext, ParentType extends Resol
   guideLoop?: Resolver<Maybe<ResolversTypes['GuideLoop']>, ParentType, ContextType>;
   instrument?: Resolver<Maybe<ResolversTypes['Instrument']>, ParentType, ContextType, Partial<QueryInstrumentArgs>>;
   instruments?: Resolver<Array<ResolversTypes['Instrument']>, ParentType, ContextType, Partial<QueryInstrumentsArgs>>;
+  logs?: Resolver<Maybe<Array<ResolversTypes['Log']>>, ParentType, ContextType>;
   mechanism?: Resolver<Maybe<ResolversTypes['Mechanism']>, ParentType, ContextType>;
   rotator?: Resolver<Maybe<ResolversTypes['Rotator']>, ParentType, ContextType>;
   slewFlags?: Resolver<Maybe<ResolversTypes['SlewFlags']>, ParentType, ContextType>;
@@ -1082,6 +1119,7 @@ export type Resolvers<ContextType = ApolloContext> = {
   GuideLoop?: GuideLoopResolvers<ContextType>;
   Instrument?: InstrumentResolvers<ContextType>;
   JSON?: GraphQLScalarType;
+  Log?: LogResolvers<ContextType>;
   Mechanism?: MechanismResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
