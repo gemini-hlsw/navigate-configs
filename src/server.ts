@@ -9,6 +9,7 @@ import { GemsInstrumentResolver } from './graphql/resolvers/GemsInstrument.js';
 import { GuideAlarmResolver } from './graphql/resolvers/GuideAlarm.js';
 import { GuideLoopResolver } from './graphql/resolvers/GuideLoop.js';
 import { InstrumentResolver } from './graphql/resolvers/Instrument.js';
+import { LogResolver } from './graphql/resolvers/Log.js';
 import { MechanismResolver } from './graphql/resolvers/Mechanism.js';
 import { RotatorResolver } from './graphql/resolvers/Rotator.js';
 import { SlewFlagsResolver } from './graphql/resolvers/SlewFlags.js';
@@ -31,6 +32,7 @@ const resolvers = {
     ...GuideAlarmResolver.Query,
     ...GuideLoopResolver.Query,
     ...InstrumentResolver.Query,
+    ...LogResolver.Query,
     ...MechanismResolver.Query,
     ...RotatorResolver.Query,
     ...SlewFlagsResolver.Query,
@@ -47,6 +49,7 @@ const resolvers = {
     ...GuideAlarmResolver.Mutation,
     ...GuideLoopResolver.Mutation,
     ...InstrumentResolver.Mutation,
+    ...LogResolver.Mutation,
     ...MechanismResolver.Mutation,
     ...RotatorResolver.Mutation,
     ...SlewFlagsResolver.Mutation,

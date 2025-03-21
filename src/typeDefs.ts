@@ -8,6 +8,7 @@ import { GemsInstrumentTypeDefs } from './graphql/types/GemsInstrument.js';
 import { GuideAlarmTypeDefs } from './graphql/types/GuideAlarm.js';
 import { GuideLoopTypeDefs } from './graphql/types/GuideLoop.js';
 import { InstrumentTypeDefs } from './graphql/types/Instrument.js';
+import { LogTypeDefs } from './graphql/types/Log.js';
 import { MechanismTypeDefs } from './graphql/types/Mechanism.js';
 import { RotatorTypeDefs } from './graphql/types/Rotator.js';
 import { SlewFlagsTypeDefs } from './graphql/types/SlewFlags.js';
@@ -26,6 +27,7 @@ export const typeDefs = [
   GuideAlarmTypeDefs,
   GuideLoopTypeDefs,
   InstrumentTypeDefs,
+  LogTypeDefs,
   MechanismTypeDefs,
   RotatorTypeDefs,
   SlewFlagsTypeDefs,
