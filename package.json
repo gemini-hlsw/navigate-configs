@@ -37,7 +37,7 @@
     "@graphql-codegen/typescript-resolvers": "4.5.0",
     "@parcel/watcher": "2.5.1",
     "@testcontainers/postgresql": "10.21.0",
-    "@types/node": "22.13.11",
+    "@types/node": "22.13.14",
     "eslint": "9.23.0",
     "eslint-import-resolver-typescript": "4.2.2",
     "eslint-plugin-import-x": "4.9.1",
