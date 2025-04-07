@@ -1,7 +1,7 @@
 // @ts-check
 
 import eslint from '@eslint/js';
-import importX from 'eslint-plugin-import-x';
+import { flatConfigs } from 'eslint-plugin-import-x';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
 import { config, configs } from 'typescript-eslint';
@@ -10,8 +10,8 @@ export default config(
   eslint.configs.recommended,
   ...configs.recommendedTypeChecked,
   ...configs.stylisticTypeChecked,
-  importX.flatConfigs.recommended,
-  importX.flatConfigs.typescript,
+  flatConfigs.recommended,
+  flatConfigs.typescript,
   {
     languageOptions: {
       parserOptions: {
