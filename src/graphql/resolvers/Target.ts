@@ -1,5 +1,4 @@
-import type { Target } from '@prisma/client';
-
+import type { Target } from '../../../gen/prisma/index.js';
 import type { Resolvers } from '../gen/index.js';
 
 export const TargetResolver: Resolvers = {

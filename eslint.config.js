@@ -51,6 +51,6 @@ export default config(
     ...configs.disableTypeChecked,
   },
   {
-    ignores: ['node_modules', 'dist', 'public', 'reports', 'src/graphql/gen'],
+    ignores: ['node_modules', 'dist', 'public', 'reports', 'src/graphql/gen', 'gen'],
   },
 );

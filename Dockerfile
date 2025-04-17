@@ -43,6 +43,7 @@ ENV COREPACK_ENABLE_NETWORK=0
 # Copy built files
 COPY --from=prod-deps --chown=software:software /usr/src/app/node_modules /usr/src/app/node_modules
 COPY --from=build --chown=software:software /usr/src/app/dist /usr/src/app/dist
+COPY --from=build --chown=software:software /usr/src/app/gen /usr/src/app/gen
 
 EXPOSE 4000
 
