@@ -1,4 +1,4 @@
-import type { Prisma } from '@prisma/client';
+import type { Prisma } from '../../../../gen/prisma/index.js';
 
 export const INITIAL_INSTRUMENTS: Prisma.InstrumentCreateInput[] = [
   {

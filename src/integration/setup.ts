@@ -2,12 +2,12 @@ import assert from 'node:assert';
 import { after, before } from 'node:test';
 
 import type { GraphQLRequest } from '@apollo/server';
-import { PrismaClient } from '@prisma/client';
 import type { StartedPostgreSqlContainer } from '@testcontainers/postgresql';
 import { PostgreSqlContainer } from '@testcontainers/postgresql';
 import { execa } from 'execa';
 import type { FormattedExecutionResult } from 'graphql';
 
+import { PrismaClient } from '../../gen/prisma/index.js';
 import type { Prisma } from '../prisma/db.js';
 import { extendPrisma } from '../prisma/extend.js';
 import type { ApolloContext } from '../server.js';
