@@ -8,6 +8,12 @@
     "enabled": true
   },
   "schedule": ["every weekend"],
+  "dockerfile": {
+    "extends": [":preserveSemverRanges"]
+  },
+  "github-actions": {
+    "extends": [":preserveSemverRanges"]
+  },
   "packageRules": [
     {
       "matchDepTypes": ["devDependencies"],
