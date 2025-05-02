@@ -1,3 +1,5 @@
+# Moved to https://github.com/gemini-hlsw/navigate-ts/tree/main/packages/configs
+
 # Navigate configs
 
 Backend api to manage configurations database using TypeScript, Graphql and Prisma.
